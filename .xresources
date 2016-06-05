@@ -1,0 +1,289 @@
+XTerm*font: -*-profont-*-r-*-*-11-*-*-*-*-*-*-*
+XTerm*boldFont: -*-profont-*-r-*-*-11-*-*-*-*-*-*-*
+XTerm*colorMode: On
+XTerm*colorBDMode: On
+XTerm*colorULMode: On
+Xterm*dynamicColors: On
+XTerm*colorBD: #FFFFFF
+XTerm*colorUL: #FFFFFF
+XTerm*metaSendsEscape: True
+XTerm*vt100.scrollBar: False
+XTerm*scrollBar: False
+XTerm*multiScroll: on
+XTerm*jumpScroll: on
+Xterm*SaveLines: 2500
+
+/* fonts */
+! Xft (X FreeType interface library) notation
+!URxvt.*font:	xft:profont:pixelsize=9:antialias=false
+!URxvt.*boldFont: xft:profont:pixelsize=9:antialias=false
+
+URxvt.*font:                  xft:profont:pixelsize=9:antialias=false, xft:tewi:pixelsize=9:antialias=false
+URxvt.*boldFont:		 	 xft:profont:pixelsize=9:antialias=false, xft:tewi:pixelsize=9:antialias=false
+
+! X logical font description notation
+!URxvt.*font:				-*-profont-*-r-*-*-11-*-*-*-*-*-*-*
+!URxvt.*boldFont:			-*-profont-*-r-*-*-11-*-*-*-*-*-*-*
+!URxvt.*italicFont:		-*-profont-*-r-*-*-11-*-*-*-*-*-*-*
+!URxvt.*font:				-nil-profont-medium-r-normal--11-110-72-72-c-60-iso8859-1
+!URxvt.*boldFont:          -nil-profont-medium-r-normal--11-110-72-72-c-60-iso8859-1
+!URxvt.*italicFont:         -nil-profont-medium-r-normal--11-110-72-72-c-60-iso8859-1
+
+!URxvt.*font: 			 	-misc-proggytinytt-medium-r-normal--0-0-0-0-c-0-iso8859-1
+!URxvt.*boldFont:		 	-misc-proggytinytt-medium-r-normal--0-0-0-0-c-0-iso8859-1
+!URxvt.*italicFont:		-misc-proggytinytt-medium-r-normal--0-0-0-0-c-0-iso8859-1
+
+!URxvt.*font:				-artwiz-cure-medium-r-normal--11-110-75-75-p-90-iso8859-1
+!URxvt.*boldFont:          -artwiz-cure-medium-r-normal--11-110-75-75-p-90-iso8859-1
+!URxvt.*italicFont:         -artwiz-cure-medium-r-normal--11-110-75-75-p-90-iso8859-1
+
+!URxvt.*font: 		         -gohu-gohufont-medium-r-normal--11-80-100-100-c-60-iso10646-1
+!URxvt.*boldFont:	         -gohu-gohufont-medium-r-normal--11-80-100-100-c-60-iso10646-1
+!URxvt.*italicFont:  		 -gohu-gohufont-medium-r-normal--11-80-100-100-c-60-iso10646-1
+
+/* colours */
+URxvt.cursorColor: #FF005F
+URxvt.colorUL: #FF8F00
+URxvt.cursorColor2: #252525
+URxvt.colorIT: #FFFFFF
+URxvt.colorBD: #FFFFFF
+URxvt.colorRV: #333333
+URxvt.underlineColor: #3a3a3a
+URxvt.highlightColor: #3a3a3a
+!URxvt.highlightTextColor:          #FEFEFE
+
+URxvt.borderColor: #2a2a2a
+!URxvt.borderColor:			#303030
+
+/* extensions */
+URxvt.selection.pattern-0: ( at .*? line \\d+[,.])
+URxvt.selection-autotransform.0: s/^ at (.*?) line (\\d+)[,.]$/:e \\Q$1\E\\x0d:$2\\x0d/
+URxvt*perl-lib: /opt/pkg/lib/urxvt/perl
+!URxvt.perl-eval:            		$^O
+!URxvt*perl-ext-common: 	default,matcher,macosx-clipboard-native
+!URxvt*keysym*M-c: 		perl:macosx-clipboard-native:copy
+!URxvt*keysym*M-v: 		perl:macosx-clipboard-native:paste
+!urxvt*urlLauncher: 			/Applications/SeaMonkey.app/Contents/MacOS/seamonkey
+!urxvt*matcher.button: 		1
+
+/* urxvt term stuff */
+URxvt*modifier: mod1
+URxvt.termName: rxvt-256color
+URxvt.loginShell: True
+URxvt.urgentOnBell: True
+URxvt.visualBell: False
+URxvt.saveLines: 10240
+URxvt.trippleclickwords: True
+URxvt.pasteableTabs:True
+URxvt.pointerBlank: True
+URxvt.pointerBlankDelay: 2
+!URxvt.hold:				0
+!URxvt.chdir:				/home/scp1/devel
+
+/* scrollbar */
+URxvt.scrollBar:          		true
+URxvt.scrollBar_right:    		false
+URxvt.scrollBar_floating: 		true
+URxvt.scrollBar_align:    		centre
+URxvt.thickness:          		5
+URxvt.scrollColor:        		#2a2a2a
+URxvt.troughColor:        		#1b1b1b
+
+/* scrolling */
+URxvt*buffered: False
+URxvt*scrollstyle: rxvt
+URxvt*mouseWheelScrollPage: False
+URxvt.scrollKey: True
+URxvt.scrollWithBuffer: False
+URxvt.scrollBack:True
+URxvt.scrollTtyOutput: True
+URxvt.scrollTtyKeypress: True
+URxvt.jumpScroll: True
+URxvt.skipScroll: True
+URxvt.secondaryScroll: True
+URxvt.keysym.Shift-Up: command:\033]720;1\007
+URxvt.keysym.Shift-Down: command:\033]721;1\007
+
+/* eyecandy */
+URxvt.transparent: False
+URxvt.depth: 32
+URxvt.internalBorder: 3
+URxvt.externalBorder: 0
+URxvt.borderLess: False
+URxvt.lineSpace: 0
+URxvt.title: Terminal
+
+!URxvt.blendType: (add,alphablend,allanon), (averaging,
+!                                 	colorize, darken, diff, dissipate, hue,
+!                                 	lighten, overlay, saturate, screen, sub,
+!                                  	tint, value)
+!URxvt.shading: 9
+!URxvt.fading: 30%
+!URxvt.fadeColor: #000000
+!URxvt.inheritPixmap: False
+!URxvt.cursorBlink: False
+!URxvt.reverseVideo: True
+!URxvt.blurRadius: 64
+!URxvt.iconFile: (file)
+!URxvt.secondaryScreen: True
+!URxvt.modifier: (alt,meta,hyper,super,mod1,mod2,mod3,mod4,mod5)
+
+/* xft */
+Xft.autohint: 0
+Xft.dpi: 96
+Xft.antialias: true
+Xft.rgba: rgb
+Xft.hinting: true
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
+
+/* Photons (iterm2) */
+URxvt*foreground: #DDCCBB
+URxvt*background: #1A1A1A
+URxvt*color0: #393939
+URxvt*color1: #c72d41
+URxvt*color2: #85c600
+URxvt*color3: #ffa600
+URxvt*color4: #0099bc
+URxvt*color5: #5b1e35
+URxvt*color6: #446a6b
+URxvt*color7: #4f585d
+URxvt*color8: #2e3537
+URxvt*color9: #ff5d4a
+URxvt*color10: #b3ff1d
+URxvt*color11: #ffaa0f
+URxvt*color12: #5cdede
+URxvt*color13: #be4773
+URxvt*color14: #76b2b3
+URxvt*color15: #85919b
+
+xterm*foreground:#DDCCBB
+xterm*background: #1A1A1A
+xterm*color0: #393939
+xterm*color1: #c72d41
+xterm*color2: #85c600
+xterm*color3: #ffa600
+xterm*color4: #0099bc
+xterm*color5: #5b1e35
+xterm*color6: #446a6b
+xterm*color7: #4f585d
+xterm*color8: #2e3537
+xterm*color9: #ff5d4a
+xterm*color10: #b3ff1d
+xterm*color11: #ffaa0f
+xterm*color12: #5cdede
+xterm*color13: #be4773
+xterm*color14: #76b2b3
+xterm*color15: #85919b
+
+/* xcalc */
+xcalc*geometry: 200x275
+xcalc.ti.bevel.background: #111111
+xcalc.ti.bevel.screen.background: #000000
+xcalc.ti.bevel.screen.DEG.background: #000000
+xcalc.ti.bevel.screen.DEG.foreground: LightSeaGreen
+xcalc.ti.bevel.screen.GRAD.background: #000000
+xcalc.ti.bevel.screen.GRAD.foreground: LightSeaGreen
+xcalc.ti.bevel.screen.RAD.background: #000000
+xcalc.ti.bevel.screen.RAD.foreground: LightSeaGreen
+xcalc.ti.bevel.screen.INV.background: #000000
+xcalc.ti.bevel.screen.INV.foreground: Red
+xcalc.ti.bevel.screen.LCD.background: #000000
+xcalc.ti.bevel.screen.LCD.foreground: LightSeaGreen
+xcalc.ti.bevel.screen.LCD.shadowWidth: 0
+xcalc.ti.bevel.screen.M.background: #000000
+xcalc.ti.bevel.screen.M.foreground: LightSeaGreen
+xcalc.ti.bevel.screen.P.background: #000000
+xcalc.ti.bevel.screen.P.foreground: Yellow
+xcalc.ti.Command.foreground: White
+xcalc.ti.Command.background: #777777
+xcalc.ti.button5.background: Orange3
+xcalc.ti.button19.background: #611161
+xcalc.ti.button18.background: #611161
+xcalc.ti.button20.background: #611111
+!uncomment to change label on division button
+!xcalc.ti.button20.label:      /
+xcalc.ti.button25.background:#722222
+xcalc.ti.button30.background: #833333
+xcalc.ti.button35.background: #944444
+xcalc.ti.button40.background: #a55555
+xcalc.ti.button22.background: #222262
+xcalc.ti.button23.background: #222262
+xcalc.ti.button24.background: #222272
+xcalc.ti.button27.background: #333373
+xcalc.ti.button28.background: #333373
+xcalc.ti.button29.background: #333373
+xcalc.ti.button32.background: #444484
+xcalc.ti.button33.background: #444484
+xcalc.ti.button34.background: #444484
+xcalc.ti.button37.background: #555595
+xcalc.ti.button38.background: #555595
+xcalc.ti.button39.background: #555595
+XCalc*Cursor: hand2
+XCalc*ShapeStyle: rectangle
+
+/* xclock */
+!xclock*Foreground:					white
+!xclock*background:				black
+!xclock*font:						-*-profont-*-r-*-*-11-*-*-*-*-*-*-*
+
+Gdraw.Background: 250 250 250
+!Gdraw.Background: #afb49f
+!Gdraw.Foreground: black
+!A list of font family names to be used in the font view to display an example character over each user character.
+fontforge.FontView.FontFamily: fixed
+!U+1D400-U+1D7FF. Used for characters that should be drawn with a serif font.
+fontforge.FontView.SerifFamily:  fixed
+!U+1D400-U+1D7FF. Used for characters that should be drawn with a script font.
+fontforge.FontView.ScriptFamily: fixed
+!U+1D400-U+1D7FF. Used for characters that should be drawn with a fraktur font.
+fontforge.FontView.FrakturFamily: fixed
+!U+1D400-U+1D7FF. Used for characters that should be drawn with a double-struck font.
+fontforge.FontView.DoubleStruckFamily: fixed
+!U+1D400-U+1D7FF. Used for characters that should be drawn with a sans-serif font.
+fontforge.FontView.SansFamily: fixed
+!U+1D400-U+1D7FF. Used for characters that should be drawn with a monospaced font.
+fontforge.FontView.MonoFamily: fixed
+!Point size of those (above) fonts.
+fontforge.FontView.FontSize: 16
+!A list of font family names to be used in the outline and bitmap character views for information messages.
+fontforge.CharView.InfoFamily: 16pt fixed
+!Sets the color used to draw curved, corner or tangent points in the outline character view.
+fontforge.CharView.PointColor: red
+!Sets the color of the first point on a contour.
+fontforge.CharView.FirstPointColor: magenta
+!Sets the color used to draw foreground outlines.
+fontforge.CharView.ForegroundOutlineColor: #ff3f00
+!Sets the color for the currently selected glyph in the metrics view.
+fontforge.MetricsView.SelectedGlyphColor: #00003F
+!Specifies the font to use in a popup message.
+Gdraw.GGadget.Popup.Font: 16pt fixed
+Gdraw.GGadget.Font: 16pt fixed
+Gdraw.GButton.Font: 16pt fixed
+Gdraw.GLabel.Font: 16pt fixed
+Gdraw.GRadio.Font: 16pt fixed
+Gdraw.GCheckBox.Font: 16pt fixed
+Gdraw.GTextField.Font: 16pt fixed
+Gdraw.GList.Font: 16pt fixed
+Gdraw.GScrollBar.Font: 16pt fixed
+Gdraw.GScrollBarThumb.Font: 16pt fixed
+Gdraw.GGroup.Font: 16pt fixed
+Gdraw.GLine.Font: 16pt fixed
+Gdraw.GMenu.Font: 16pt fixed
+Gdraw.GMenuBar.Font: 16pt fixed
+Gdraw.GTabSet.Font: 16pt fixed
+! no border
+Gdraw.GButton.Box.BorderInner: False
+Gdraw.GButton.Box.BorderOuter: False
+! give pressed a darker appearance
+Gdraw.GButton.Box.DoDepressedBackground: True
+Gdraw.GButton.Box.DrawDefault: False
+Gdraw.GButton.Box.NormalBackground: #cfcfcf
+Gdraw.GButton.Box.PressedBackground: #c9e873
+! rectangular border shape instead of the ugly roundrect
+Gdraw.GButton.Box.BorderShape: rect
+Gdraw.GButton.Box.Padding: 2
+! button font something bitmap
+Gdraw.GButton.Font: 16pt fixed
+Gdraw.GButton.ShiftOnPress: False
+!}}}

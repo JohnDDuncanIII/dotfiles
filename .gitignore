@@ -1,0 +1,14 @@
+# non-dot files
+/[^.]*
+/.CFUserTextEncoding
+/.bash_history
+/.sheepshaver_nvram
+/.wmweather
+/.gnupg
+/.bash_sessions*
+/.FontForge*
+/.ssh*
+/.wine*
+/.cache*
+/.history*
+/.Trash*

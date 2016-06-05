@@ -1,0 +1,35 @@
+disk OS9.img
+disk /Users/John/Desktop/AppleWorks 6.2.4 CD.toast
+disk New.dsk
+cdrom /dev/poll/cdrom
+extfs /
+screen win/640/480
+windowmodes 0
+screenmodes 0
+seriala 
+serialb /dev/null
+rom Mac OS ROM
+bootdrive 0
+bootdriver 0
+ramsize 268435456
+frameskip 0
+gfxaccel true
+nocdrom false
+nonet false
+nosound false
+nogui false
+noclipconversion false
+ignoresegv false
+ignoreillegal false
+jit true
+jit68k false
+keyboardtype 5
+ether 
+keycodes false
+keycodefile 
+mousewheelmode 1
+mousewheellines 3
+dsp /dev/dsp
+mixer /dev/mixer
+ignoresegv false
+idlewait true

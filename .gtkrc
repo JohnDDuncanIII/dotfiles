@@ -1,0 +1,6 @@
+style "default-text" {
+       fontset = "-sony-fixed-medium-r-normal--16-120-100-100-c-80-iso8859-1"
+
+}
+
+class "GtkWidget" style "default-text"

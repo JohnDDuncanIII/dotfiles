@@ -1,0 +1,21 @@
+music_directory  "~/Music/"
+playlist_directory   "~/.mpd/playlists"
+db_file  "~/.mpd/database"
+pid_file     "~/.mpd/pid"
+state_file  "~/.mpd/state"
+sticker_file     "~/.mpd/sticker.sql"
+user                  "John"
+port     "6600"
+auto_update "yes"
+ 
+audio_output {
+    type "osx"
+    name "OS X"
+    mixer_type "software"
+    format          "44100:16:1"
+}
+
+decoder {
+	plugin "ffmpeg"
+	enabled "yes"
+}

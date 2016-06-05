@@ -1,0 +1,91 @@
+####################################################
+## Created by John
+## hu6tds8lls@gmail.com
+## Largely Inspired By dipilibupap crshd, vicophine, and Him .
+####################################################
+# MPD
+mpd_host = "127.0.0.1"
+mpd_port = "6600"
+mpd_music_dir = "~/Music/"
+mpd_connection_timeout = "5"
+mpd_crossfade_time = "0"
+
+# Delays  
+playlist_disable_highlight_delay = "2"
+message_delay_time = "1"
+
+mouse_support = "yes"
+
+# Playlist
+song_list_format = "$7[$4%n$7]$9 $7[$9$3%l$7]$9 $1|$9 $7%a$9 $1|$9 $2%t$9 $R $5%b$9"
+#song_library_format = "$7[$4%n$7]$9 $7[$9$3%l$7]$9 $1|$9 $7%a$9 $1|$9 $2%t$9 $R $5%b$9"
+#tag_editor_album_format = "{(%y) }%b"
+song_columns_list_format = "(13)[green]{l} (35)[red]{t|f} (30)[blue]{a} (25)[magenta]{b} "
+now_playing_prefix = "$b$5»$1»$2»$1»                         "
+#now_playing_prefix = "$b$5»$7»$1»						     "
+#now_playing_suffix = "$/b"
+playlist_display_mode = "columns" (classic/columns)
+autocenter_mode = "yes"
+centered_cursor = "yes"
+#fancy_scrolling = "yes"
+cyclic_scrolling = "yes"
+display_bitrate = "yes"
+
+# Clock
+clock_display_seconds = "yes"
+
+# Bars
+song_status_format = "$2%a $8• $6%t $8• $3%b {(Disc %d) }$8• $5%y$8"
+#progressbar_look = "─╼·"
+progressbar_look = "─▰ "
+titles_visibility = "no"
+header_visibility = "no"
+statusbar_visibility = "yes"
+
+# Browser
+browser_playlist_prefix = "$2plist »$9 "
+browser_display_mode = "columns" (classic/columns)
+
+# Colors
+discard_colors_if_item_is_selected = "yes"
+header_window_color = "black"
+volume_color = "cyan"
+state_line_color = "black"
+state_flags_color = "blue"
+main_window_color = "white"
+color1 = "default"
+color2 = "green"
+
+progressbar_color = "blue"
+statusbar_color = "default"
+
+main_window_highlight_color = "red"
+active_column_color = "red"
+alternative_ui_separator_color = "white"
+active_window_border = "black"
+colors_enabled = "yes"
+
+# Others
+song_window_title_format = "{%a }⌁ {%t}{ [%b{ Disc %d}]}|{%f}"
+alternative_header_first_line_format = "$b$1$aqqu$/a$2 {%t}|{%f} $1$atqq$/a$5$/b$8"
+alternative_header_second_line_format = "{{$6$b%a$/b$9}{ - $7%b$9}{ $5($4%y$9)}}|{%D}"
+search_engine_display_mode = "columns" (classic/columns)
+follow_now_playing_lyrics = "yes"
+
+#selected_item_prefix = "$6"
+#selected_item_suffix = "$9"
+#playlist_show_remaining_time = "no"
+#incremental_seeking = "yes"
+#seek_time = "1"
+#autocenter_mode = "no"
+#centered_cursor = "no"
+#default_place_to_search_in = "database" (database/playlist)
+#user_interface = "classic" (classic/alternative)
+
+# Visualizer
+visualizer_fifo_path = "/tmp/mpd.fifo"
+visualizer_output_name = "visual"
+visualizer_sync_interval = "30"
+visualizer_type = "spectrum" (spectrum/wave) 
+visualizer_color = "blue"
+visualizer_look = "●▋"
