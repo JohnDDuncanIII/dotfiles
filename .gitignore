@@ -5,10 +5,12 @@
 /.sheepshaver_nvram
 /.wmweather
 /.gnupg
-/.bash_sessions*
+/.DS_Store
+/.mpd*
 /.FontForge*
 /.ssh*
 /.wine*
 /.cache*
 /.history*
 /.Trash*
+!.mpdconf
