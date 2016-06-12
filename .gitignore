@@ -1,4 +1,5 @@
 # non-dot files
+.DS_Store
 /[^.]*
 /.CFUserTextEncoding
 /.bash_history
