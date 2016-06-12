@@ -13,6 +13,7 @@
 /.cache*
 /.history*
 /.Trash*
+!README.md
 !.mpdconf
 !/GNUstep/
 !/screenshots/
