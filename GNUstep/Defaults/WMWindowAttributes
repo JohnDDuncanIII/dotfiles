@@ -1,0 +1,86 @@
+{
+  emacs24.Emacs24 = {
+    Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/emacs24.Emacs24.xpm";
+  };
+  firefox.Firefox = {
+    Icon = "net_48-256.png";
+  };
+  xmms.Xmms = {
+    Icon = "CDPlayer-app_48-256.png";
+  };
+  eog.Eog = {
+    Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/eog.Eog.xpm";
+  };
+  xclock.Catclock = {
+    Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/xclock.Catclock.xpm";
+  };
+  "sun-awt-X11-XFramePeer.jetbrains-pycharm-ce" = {
+    Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/sun-awt-X11-XFramePeer.jetbrains-pycharm-ce.xpm";
+  };
+  XMMS_Player.xmms = {
+    Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/XMMS_Player.xmms.xpm";
+  };
+  thunderbird.Thunderbird = {
+    Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/thunderbird.Thunderbird.xpm";
+  };
+  xterm.XTerm = {
+    Icon = "xterm-color_48x48.xpm";
+  };
+  "jetbrains-pycharm-ce.jetbrains-pycharm-ce" = {
+    Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/jetbrains-pycharm-ce.jetbrains-pycharm-ce.xpm";
+  };
+  "gimp-2.8.Gimp-2.8" = {
+    Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/gimp-2.8.Gimp-2.8.xpm";
+  };
+  xcalc.XCalc = {
+    Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/xcalc.XCalc.xpm";
+  };
+  thunar.Thunar = {
+    Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/thunar.Thunar.xpm";
+  };
+  xload.XLoad = {
+    Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/xload.XLoad.xpm";
+  };
+  gedit.Gedit = {
+    Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/gedit.Gedit.xpm";
+  };
+  mahjongg.Mahjongg = {
+    Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/mahjongg.Mahjongg.xpm";
+  };
+  "xfce4-terminal.Xfce4-terminal" = {
+    Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/xfce4-terminal.Xfce4-terminal.xpm";
+  };
+  seamonkey.Seamonkey = {
+    Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/seamonkey.Seamonkey.xpm";
+  };
+  urxvt.URxvt = {
+    Icon = "black_Terminal-app_48-256.png";
+  };
+  "sun-awt-X11-XFramePeer.JFLAP" = {
+    Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/sun-awt-X11-XFramePeer.JFLAP.xpm";
+  };
+  groupLeader.WPrefs = {
+    Icon = "Preferences_48-256.png";
+  };
+  emacs.Emacs = {
+    Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/emacs.Emacs.xpm";
+  };
+  JFLAP.JFLAP = {
+    Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/JFLAP.JFLAP.xpm";
+  };
+  nautilus.Nautilus = {
+    Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/nautilus.Nautilus.xpm";
+  };
+  "file-roller.File-roller" = {
+    Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/file-roller.File-roller.xpm";
+  };
+  Logo.WMDock = {
+    Icon = 4tQj.png;
+  };
+  CriticalSectionSim.CriticalSectionSim = {
+    Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/CriticalSectionSim.CriticalSectionSim.xpm";
+  };
+  xclock.XClock = {
+    Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/xclock.XClock.xpm";
+  };
+}

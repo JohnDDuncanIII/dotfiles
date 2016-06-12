@@ -1,0 +1,361 @@
+{
+  Dock = {
+    Applications800 = (
+      {
+        Forced = No;
+        Name = Logo.WMDock;
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,0";
+        Lock = Yes;
+        Command = "/opt/pkg/share/GNUstep/Applications/WPrefs.app/WPrefs";
+      },
+      {
+        Forced = No;
+        Name = wmnd.wmnd;
+        DropCommand = "/opt/pkg/bin/wmnd %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,3";
+        Lock = No;
+        PasteCommand = "/opt/pkg/bin/wmnd %s";
+        Command = "/opt/pkg/bin/wmnd";
+      },
+      {
+        Forced = No;
+        Name = "/opt/pkg/bin/wmitime./opt/pkg/bin/wmitime";
+        DropCommand = "/opt/pkg/bin/wmitime %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,2";
+        Lock = No;
+        PasteCommand = "/opt/pkg/bin/wmitime %s";
+        Command = "/opt/pkg/bin/wmitime";
+      },
+      {
+        Forced = No;
+        Name = "/opt/pkg/bin/wmweather./opt/pkg/bin/wmweather";
+        DropCommand = "/opt/pkg/bin/wmweather %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,9";
+        Lock = No;
+        PasteCommand = "/opt/pkg/bin/wmweather %s";
+        Command = "/opt/pkg/bin/wmweather";
+      },
+      {
+        Forced = No;
+        Name = wmusic.DockApp;
+        DropCommand = "/opt/pkg/bin/wmusic %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,7";
+        Lock = No;
+        PasteCommand = "/opt/pkg/bin/wmusic %s";
+        Command = "/opt/pkg/bin/wmusic";
+      },
+      {
+        Forced = No;
+        Name = "/usr/local/bin/wmMatrix./usr/local/bin/wmMatrix";
+        DropCommand = "/usr/local/bin/wmMatrix %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,8";
+        Lock = No;
+        PasteCommand = "/usr/local/bin/wmMatrix %s";
+        Command = "/usr/local/bin/wmMatrix";
+      },
+      {
+        Forced = No;
+        Name = wmcpuload.DockApp;
+        DropCommand = "/opt/pkg/bin/wmcpuload %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,10";
+        Lock = No;
+        PasteCommand = "/opt/pkg/bin/wmcpuload %s";
+        Command = "/opt/pkg/bin/wmcpuload";
+      },
+      {
+        Forced = No;
+        Name = wmnd.wmnd;
+        DropCommand = "/opt/pkg/bin/wmnd -i en1 -w lines %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,4";
+        Lock = No;
+        PasteCommand = "/opt/pkg/bin/wmnd -i en1 -w lines %s";
+        Command = "/opt/pkg/bin/wmnd -i en1 -w lines";
+      },
+      {
+        Forced = No;
+        Name = groupLeader.WPrefs;
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,1";
+        Lock = No;
+        Command = "/opt/pkg/share/GNUstep/Applications/WPrefs.app/WPrefs";
+      },
+      {
+        Forced = No;
+        Name = "/usr/local/bin/wmSpaceWeather./usr/local/bin/wmSpaceWeather";
+        DropCommand = "/usr/local/bin/wmSpaceWeather %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,11";
+        Lock = No;
+        PasteCommand = "/usr/local/bin/wmSpaceWeather %s";
+        Command = "/usr/local/bin/wmSpaceWeather";
+      },
+      {
+        Forced = No;
+        Name = wmnd.wmnd;
+        DropCommand = "/opt/pkg/bin/wmnd -i off %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,5";
+        Lock = No;
+        PasteCommand = "/opt/pkg/bin/wmnd -i off %s";
+        Command = "/opt/pkg/bin/wmnd -i off";
+      },
+      {
+        Forced = No;
+        Name = WMmp.DockApp;
+        DropCommand = "WMmp %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,6";
+        Lock = No;
+        PasteCommand = "WMmp %s";
+        Command = WMmp;
+      }
+    );
+    AutoRaiseLower = Yes;
+    Applications = (
+      {
+        Forced = No;
+        Name = Logo.WMDock;
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,0";
+        Lock = Yes;
+        Command = "/opt/pkg/share/GNUstep/Applications/WPrefs.app/WPrefs";
+      },
+      {
+        Forced = No;
+        Name = wmnd.wmnd;
+        DropCommand = "/opt/pkg/bin/wmnd %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,3";
+        Lock = No;
+        PasteCommand = "/opt/pkg/bin/wmnd %s";
+        Command = "/opt/pkg/bin/wmnd";
+      },
+      {
+        Forced = No;
+        Name = "/opt/pkg/bin/wmitime./opt/pkg/bin/wmitime";
+        DropCommand = "/opt/pkg/bin/wmitime %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,2";
+        Lock = No;
+        PasteCommand = "/opt/pkg/bin/wmitime %s";
+        Command = "/opt/pkg/bin/wmitime";
+      },
+      {
+        Forced = No;
+        Name = "/opt/pkg/bin/wmweather./opt/pkg/bin/wmweather";
+        DropCommand = "/opt/pkg/bin/wmweather %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,9";
+        Lock = No;
+        PasteCommand = "/opt/pkg/bin/wmweather %s";
+        Command = "/opt/pkg/bin/wmweather";
+      },
+      {
+        Forced = No;
+        Name = wmusic.DockApp;
+        DropCommand = "/opt/pkg/bin/wmusic %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,7";
+        Lock = No;
+        PasteCommand = "/opt/pkg/bin/wmusic %s";
+        Command = "/opt/pkg/bin/wmusic";
+      },
+      {
+        Forced = No;
+        Name = "/usr/local/bin/wmMatrix./usr/local/bin/wmMatrix";
+        DropCommand = "/usr/local/bin/wmMatrix %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,8";
+        Lock = No;
+        PasteCommand = "/usr/local/bin/wmMatrix %s";
+        Command = "/usr/local/bin/wmMatrix";
+      },
+      {
+        Forced = No;
+        Name = wmcpuload.DockApp;
+        DropCommand = "/opt/pkg/bin/wmcpuload %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,10";
+        Lock = No;
+        PasteCommand = "/opt/pkg/bin/wmcpuload %s";
+        Command = "/opt/pkg/bin/wmcpuload";
+      },
+      {
+        Forced = No;
+        Name = wmnd.wmnd;
+        DropCommand = "/opt/pkg/bin/wmnd -i en1 -w lines %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,4";
+        Lock = No;
+        PasteCommand = "/opt/pkg/bin/wmnd -i en1 -w lines %s";
+        Command = "/opt/pkg/bin/wmnd -i en1 -w lines";
+      },
+      {
+        Forced = No;
+        Name = groupLeader.WPrefs;
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,1";
+        Lock = No;
+        Command = "/opt/pkg/share/GNUstep/Applications/WPrefs.app/WPrefs";
+      },
+      {
+        Forced = No;
+        Name = "/usr/local/bin/wmSpaceWeather./usr/local/bin/wmSpaceWeather";
+        DropCommand = "/usr/local/bin/wmSpaceWeather %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,11";
+        Lock = No;
+        PasteCommand = "/usr/local/bin/wmSpaceWeather %s";
+        Command = "/usr/local/bin/wmSpaceWeather";
+      },
+      {
+        Forced = No;
+        Name = wmnd.wmnd;
+        DropCommand = "/opt/pkg/bin/wmnd -i off %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,5";
+        Lock = No;
+        PasteCommand = "/opt/pkg/bin/wmnd -i off %s";
+        Command = "/opt/pkg/bin/wmnd -i off";
+      },
+      {
+        Forced = No;
+        Name = WMmp.DockApp;
+        DropCommand = "WMmp %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,6";
+        Lock = No;
+        PasteCommand = "WMmp %s";
+        Command = WMmp;
+      }
+    );
+    Lowered = Yes;
+    Position = "-64,0";
+  };
+  Clip = {
+    Forced = No;
+    Name = Logo.WMClip;
+    DropCommand = "wmsetbg -u -t %d";
+    BuggyApplication = No;
+    AutoLaunch = No;
+    Position = "0,0";
+    Lock = No;
+    Command = "-";
+  };
+  Applications = (
+    {
+      Dock = School;
+      Name = urxvt.URxvt;
+      Shaded = No;
+      Miniaturized = No;
+      Command = "urxvt -cd /Users/John";
+      Geometry = "491x270+465+71";
+      Hidden = No;
+      Workspace = School;
+      ShortcutMask = 0;
+    }
+  );
+  Drawers = ();
+  Workspaces = (
+    {
+      Clip = {
+        AutoRaiseLower = No;
+        AutoCollapse = No;
+        Applications = ();
+        Collapsed = No;
+        AutoAttractIcons = No;
+        Lowered = Yes;
+      };
+      Name = Main;
+    },
+    {
+      Clip = {
+        AutoRaiseLower = No;
+        AutoCollapse = No;
+        Applications = (
+          {
+            Forced = No;
+            Name = xterm.XTerm;
+            BuggyApplication = No;
+            AutoLaunch = No;
+            Position = "0,1";
+            Lock = No;
+            Command = xterm;
+            Omnipresent = No;
+          },
+          {
+            Forced = No;
+            Name = xmms.Xmms;
+            DropCommand = "/opt/pkg/bin/xmms %d";
+            BuggyApplication = No;
+            AutoLaunch = No;
+            Position = "0,2";
+            Lock = No;
+            PasteCommand = "/opt/pkg/bin/xmms %s";
+            Command = "/opt/pkg/bin/xmms";
+            Omnipresent = No;
+          },
+          {
+            Forced = No;
+            Name = urxvt.URxvt;
+            BuggyApplication = No;
+            AutoLaunch = No;
+            Position = "0,3";
+            Lock = No;
+            Command = "/opt/pkg/bin/urxvtc";
+            Omnipresent = No;
+          },
+          {
+            Forced = No;
+            Name = firefox.Firefox;
+            DropCommand = "firefox %d";
+            BuggyApplication = No;
+            AutoLaunch = No;
+            Position = "0,4";
+            Lock = No;
+            PasteCommand = "firefox %s";
+            Command = firefox;
+            Omnipresent = No;
+          }
+        );
+        Collapsed = No;
+        AutoAttractIcons = No;
+        Lowered = Yes;
+      };
+      Name = School;
+    }
+  );
+  Workspace = School;
+}

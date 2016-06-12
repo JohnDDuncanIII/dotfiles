@@ -14,3 +14,5 @@
 /.history*
 /.Trash*
 !.mpdconf
+!/GNUstep/
+!/screenshots/
