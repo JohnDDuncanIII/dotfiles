@@ -6,9 +6,15 @@
 /.sheepshaver_nvram
 /.wmweather
 /.gnupg
+/.get-hsts
+/.oracle*
 /.DS_Store
 /.mpd*
 /.FontForge*
+/.emacs.d/auto-save-list*
+/.config/mpv/watch_later*
+/.cups/lpoptions
+/.local*
 /.ssh*
 /.wine*
 /.cache*
