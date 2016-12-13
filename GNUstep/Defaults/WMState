@@ -34,17 +34,6 @@
       },
       {
         Forced = No;
-        Name = "/opt/pkg/bin/wmweather./opt/pkg/bin/wmweather";
-        DropCommand = "/opt/pkg/bin/wmweather %d";
-        BuggyApplication = No;
-        AutoLaunch = No;
-        Position = "0,9";
-        Lock = No;
-        PasteCommand = "/opt/pkg/bin/wmweather %s";
-        Command = "/opt/pkg/bin/wmweather";
-      },
-      {
-        Forced = No;
         Name = wmusic.DockApp;
         DropCommand = "/opt/pkg/bin/wmusic %d";
         BuggyApplication = No;
@@ -102,7 +91,7 @@
         DropCommand = "/usr/local/bin/wmSpaceWeather %d";
         BuggyApplication = No;
         AutoLaunch = No;
-        Position = "0,11";
+        Position = "0,9";
         Lock = No;
         PasteCommand = "/usr/local/bin/wmSpaceWeather %s";
         Command = "/usr/local/bin/wmSpaceWeather";
@@ -165,17 +154,6 @@
       },
       {
         Forced = No;
-        Name = "/opt/pkg/bin/wmweather./opt/pkg/bin/wmweather";
-        DropCommand = "/opt/pkg/bin/wmweather %d";
-        BuggyApplication = No;
-        AutoLaunch = No;
-        Position = "0,9";
-        Lock = No;
-        PasteCommand = "/opt/pkg/bin/wmweather %s";
-        Command = "/opt/pkg/bin/wmweather";
-      },
-      {
-        Forced = No;
         Name = wmusic.DockApp;
         DropCommand = "/opt/pkg/bin/wmusic %d";
         BuggyApplication = No;
@@ -233,7 +211,7 @@
         DropCommand = "/usr/local/bin/wmSpaceWeather %d";
         BuggyApplication = No;
         AutoLaunch = No;
-        Position = "0,11";
+        Position = "0,9";
         Lock = No;
         PasteCommand = "/usr/local/bin/wmSpaceWeather %s";
         Command = "/usr/local/bin/wmSpaceWeather";
@@ -276,12 +254,42 @@
   };
   Applications = (
     {
+      Name = thunar.Thunar;
+      Shaded = No;
+      Miniaturized = No;
+      Command = thunar;
+      Geometry = "925x708+175+18";
+      Hidden = No;
+      Workspace = School;
+      ShortcutMask = 0;
+    },
+    {
+      Name = "gimp-2.8.Gimp-2.8";
+      Shaded = No;
+      Miniaturized = Yes;
+      Command = "gimp-2.8";
+      Geometry = "658x80+482+181";
+      Hidden = No;
+      Workspace = School;
+      ShortcutMask = 0;
+    },
+    {
+      Name = XMMS_Player.xmms;
+      Shaded = No;
+      Miniaturized = Yes;
+      Command = "/opt/pkg/bin/xmms";
+      Geometry = "275x116+13+326";
+      Hidden = No;
+      Workspace = School;
+      ShortcutMask = 0;
+    },
+    {
       Dock = School;
       Name = urxvt.URxvt;
       Shaded = No;
-      Miniaturized = No;
+      Miniaturized = Yes;
       Command = "urxvt -cd /Users/John";
-      Geometry = "491x270+465+71";
+      Geometry = "491x270+191+288";
       Hidden = No;
       Workspace = School;
       ShortcutMask = 0;
@@ -305,16 +313,6 @@
         AutoRaiseLower = No;
         AutoCollapse = No;
         Applications = (
-          {
-            Forced = No;
-            Name = xterm.XTerm;
-            BuggyApplication = No;
-            AutoLaunch = No;
-            Position = "0,1";
-            Lock = No;
-            Command = xterm;
-            Omnipresent = No;
-          },
           {
             Forced = No;
             Name = xmms.Xmms;
@@ -347,6 +345,18 @@
             Lock = No;
             PasteCommand = "firefox %s";
             Command = firefox;
+            Omnipresent = No;
+          },
+          {
+            Forced = No;
+            Name = xterm.XTerm;
+            DropCommand = "xterm %d";
+            BuggyApplication = No;
+            AutoLaunch = No;
+            Position = "0,1";
+            Lock = No;
+            PasteCommand = "xterm %s";
+            Command = xterm;
             Omnipresent = No;
           }
         );

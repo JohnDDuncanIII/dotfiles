@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mime-type xmlns="http://www.freedesktop.org/standards/shared-mime-info" type="video/mpeg">
+  <!--Created automatically by update-mime-database. DO NOT EDIT!-->
+  <glob pattern="*.mpe"/>
+  <glob pattern="*.mpeg"/>
+  <glob pattern="*.mpg"/>
+</mime-type>

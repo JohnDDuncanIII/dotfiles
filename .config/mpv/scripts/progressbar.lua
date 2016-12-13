@@ -1,6 +1,7 @@
 local msg = require('mp.msg')
 local options = require('mp.options')
 local script_name = 'torque-progressbar'
+mp.get_osd_size = mp.get_osd_size or mp.get_screen_size
 local log = {
   debug = function(format, ...)
     return msg.debug(format:format(...))
@@ -58,38 +59,75 @@ local log = {
     return msg.info(table.concat(result, "\n"))
   end
 }
+local FG_PLACEHOLDER = '__FG__'
+local BG_PLACEHOLDER = '__BG__'
 local settings = {
-  font = 'Source Sans Pro Semibold',
-  ['title-font-size'] = 30,
-  ['time-font-size'] = 30,
-  ['hover-time-font-size'] = 26,
-  ['hover-time-left-margin'] = 120,
-  ['hover-time-right-margin'] = 130,
-  ['elapsed-offscreen-pos'] = -100,
-  ['remaining-offscreen-pos'] = -100,
-  ['title-offscreen-pos'] = -40,
-  ['bar-foreground'] = 'FC799E',
-  ['bar-background'] = '2D2D2D',
-  ['elapsed-foreground'] = 'FC799E',
-  ['elapsed-background'] = '2D2D2D',
-  ['remaining-foreground'] = 'FC799E',
-  ['remaining-background'] = '2D2D2D',
-  ['hover-time-foreground'] = 'FC799E',
-  ['hover-time-background'] = '2D2D2D',
-  ['title-foreground'] = 'FC799E',
-  ['title-background'] = '2D2D2D',
-  ['pause-indicator-foreground'] = 'FC799E',
-  ['pause-indicator-background'] = '2D2D2D',
   ['hover-zone-height'] = 40,
   ['top-hover-zone-height'] = 40,
+  ['foreground'] = 'FC799E',
+  ['background'] = '2D2D2D',
+  ['enable-bar'] = true,
   ['bar-height-inactive'] = 2,
   ['bar-height-active'] = 8,
+  ['seek-precision'] = 'exact',
+  ['bar-foreground'] = FG_PLACEHOLDER,
+  ['bar-cache-color'] = '444444',
+  ['bar-background'] = BG_PLACEHOLDER,
+  ['enable-elapsed-time'] = true,
+  ['elapsed-foreground'] = FG_PLACEHOLDER,
+  ['elapsed-background'] = BG_PLACEHOLDER,
+  ['elapsed-left-margin'] = 2,
+  ['elapsed-bottom-margin'] = 0,
+  ['enable-remaining-time'] = true,
+  ['remaining-foreground'] = FG_PLACEHOLDER,
+  ['remaining-background'] = BG_PLACEHOLDER,
+  ['remaining-right-margin'] = 4,
+  ['remaining-bottom-margin'] = 0,
+  ['enable-hover-time'] = true,
+  ['hover-time-foreground'] = FG_PLACEHOLDER,
+  ['hover-time-background'] = BG_PLACEHOLDER,
+  ['hover-time-left-margin'] = 120,
+  ['hover-time-right-margin'] = 130,
+  ['hover-time-bottom-margin'] = 0,
+  ['enable-title'] = true,
+  ['title-left-margin'] = 4,
+  ['title-top-margin'] = 0,
+  ['title-font-size'] = 30,
+  ['title-foreground'] = FG_PLACEHOLDER,
+  ['title-background'] = BG_PLACEHOLDER,
   ['pause-indicator'] = true,
-  ['redraw-period'] = 0.03
+  ['pause-indicator-foreground'] = FG_PLACEHOLDER,
+  ['pause-indicator-background'] = BG_PLACEHOLDER,
+  ['enable-chapter-markers'] = true,
+  ['chapter-marker-width'] = 2,
+  ['chapter-marker-width-active'] = 4,
+  ['chapter-marker-active-height-fraction'] = 1,
+  ['chapter-marker-before'] = FG_PLACEHOLDER,
+  ['chapter-marker-after'] = BG_PLACEHOLDER,
+  ['request-display-duration'] = 1,
+  ['redraw-period'] = 0.03,
+  ['font'] = 'Source Sans Pro Semibold',
+  ['time-font-size'] = 30,
+  ['hover-time-font-size'] = 26,
+  ['elapsed-offscreen-pos'] = -100,
+  ['remaining-offscreen-pos'] = -100,
+  ['title-offscreen-pos'] = -40
 }
 options.read_options(settings, script_name)
+for key, value in pairs(settings) do
+  if key:match('-foreground') or key == 'chapter-marker-before' then
+    if value == FG_PLACEHOLDER then
+      settings[key] = settings.foreground
+    end
+  elseif key:match('-background') or key == 'chapter-marker-after' then
+    if value == BG_PLACEHOLDER then
+      settings[key] = settings.background
+    end
+  end
+end
 local OSDAggregator
 do
+  local _class_0
   local _base_0 = {
     addSubscriber = function(self, subscriber)
       if not subscriber then
@@ -108,13 +146,21 @@ do
         self.subscribers[i].aggregatorIndex = i
       end
     end,
-    update = function(self, force)
-      if force == nil then
-        force = false
+    forceResize = function(self)
+      for index, subscriber in ipairs(self.subscribers) do
+        subscriber:updateSize(self.w, self.h)
       end
-      local needsRedraw = force
-      local x, y = mp.get_mouse_pos()
-      local w, h = mp.get_screen_size()
+    end,
+    update = function(self, needsRedraw)
+      do
+        local _with_0 = self.inputState
+        local oldX, oldY = _with_0.mouseX, _with_0.mouseY
+        _with_0.mouseX, _with_0.mouseY = mp.get_mouse_pos()
+        if _with_0.mouseDead and (oldX ~= _with_0.mouseX or oldY ~= _with_0.mouseY) then
+          _with_0.mouseDead = false
+        end
+      end
+      local w, h = mp.get_osd_size()
       local needsResize = false
       if w ~= self.w or h ~= self.h then
         self.w, self.h = w, h
@@ -123,7 +169,7 @@ do
       for sub = 1, self.subscriberCount do
         local theSub = self.subscribers[sub]
         local update = false
-        if theSub:update(x, y, self.mouseOver) then
+        if theSub:update(self.inputState) then
           update = true
         end
         if (needsResize and theSub:updateSize(w, h)) or update then
@@ -131,7 +177,7 @@ do
           self.script[sub] = theSub:stringify()
         end
       end
-      if true == needsRedraw then
+      if needsRedraw == true then
         return mp.set_osd_ass(self.w, self.h, table.concat(self.script, '\n'))
       end
     end,
@@ -152,12 +198,18 @@ do
     end
   }
   _base_0.__index = _base_0
-  local _class_0 = setmetatable({
+  _class_0 = setmetatable({
     __init = function(self)
       self.script = { }
       self.subscribers = { }
+      self.inputState = {
+        mouseX = -1,
+        mouseY = -1,
+        mouseInWindow = false,
+        displayRequested = false,
+        mouseDead = true
+      }
       self.subscriberCount = 0
-      self.mouseOver = false
       self.w = 0
       self.h = 0
       self.updateTimer = mp.add_periodic_timer(settings['redraw-period'], (function()
@@ -170,12 +222,35 @@ do
       mp.register_event('shutdown', function()
         return self.updateTimer:kill()
       end)
-      mp.add_key_binding("MOUSE_LEAVE", function()
-        self.mouseOver = false
+      mp.observe_property('fullscreen', 'bool', function()
+        do
+          local _with_0 = self.inputState
+          _with_0.mouseX, _with_0.mouseY = mp.get_mouse_pos()
+          _with_0.mouseDead = true
+          return _with_0
+        end
       end)
-      return mp.add_key_binding("MOUSE_ENTER", function()
-        self.mouseOver = true
+      mp.add_forced_key_binding("mouse_leave", "mouse-leave", function()
+        self.inputState.mouseInWindow = false
       end)
+      mp.add_forced_key_binding("mouse_enter", "mouse-enter", function()
+        self.inputState.mouseInWindow = true
+      end)
+      local displayDuration = settings['request-display-duration']
+      local displayRequestTimer = mp.add_timeout(0, function() end)
+      return mp.add_key_binding("tab", "request-display", function(event)
+        if event.event == "down" or event.event == "press" then
+          displayRequestTimer:kill()
+          self.inputState.displayRequested = true
+        end
+        if event.event == "up" or event.event == "press" then
+          displayRequestTimer = mp.add_timeout(displayDuration, function()
+            self.inputState.displayRequested = false
+          end)
+        end
+      end, {
+        complex = true
+      })
     end,
     __base = _base_0,
     __name = "OSDAggregator"
@@ -192,6 +267,7 @@ do
 end
 local AnimationQueue
 do
+  local _class_0
   local _base_0 = {
     registerAnimation = function(self, animation)
       if self.list then
@@ -263,7 +339,7 @@ do
     end
   }
   _base_0.__index = _base_0
-  local _class_0 = setmetatable({
+  _class_0 = setmetatable({
     __init = function(self, aggregator)
       self.aggregator = aggregator
       self.list = nil
@@ -293,6 +369,7 @@ do
 end
 local Animation
 do
+  local _class_0
   local _base_0 = {
     update = function(self, currentTime)
       self.currentTime = currentTime
@@ -303,8 +380,12 @@ do
       if self.accel then
         progress = math.pow(progress, self.accel)
       end
-      local value = (1 - progress) * self.initialValue + progress * self.endValue
-      self:updateCb(value)
+      if self.isReversed then
+        self.value = (1 - progress) * self.endValue + progress * self.initialValue
+      else
+        self.value = (1 - progress) * self.initialValue + progress * self.endValue
+      end
+      self:updateCb(self.value)
       if self.isFinished and self.finishedCb then
         self:finishedCb()
       end
@@ -321,7 +402,6 @@ do
     end,
     reverse = function(self)
       self.isReversed = not self.isReversed
-      self.initialValue, self.endValue = self.endValue, self.initialValue
       self.startTime = 2 * self.currentTime - self.duration - self.startTime
       self.accel = 1 / self.accel
     end,
@@ -332,12 +412,13 @@ do
     end
   }
   _base_0.__index = _base_0
-  local _class_0 = setmetatable({
+  _class_0 = setmetatable({
     __init = function(self, initialValue, endValue, duration, updateCb, finishedCb, accel)
       if accel == nil then
         accel = 1
       end
       self.initialValue, self.endValue, self.duration, self.updateCb, self.finishedCb, self.accel = initialValue, endValue, duration, updateCb, finishedCb, accel
+      self.value = self.initialValue
       self.startTime = mp.get_time()
       self.currentTime = self.startTime
       self.durationR = 1 / self.duration
@@ -360,6 +441,7 @@ do
 end
 local Rect
 do
+  local _class_0
   local _base_0 = {
     setPosition = function(self, x, y)
       self.x = x or self.x
@@ -382,7 +464,7 @@ do
     end
   }
   _base_0.__index = _base_0
-  local _class_0 = setmetatable({
+  _class_0 = setmetatable({
     __init = function(self, x, y, w, h)
       self.x, self.y, self.w, self.h = x, y, w, h
     end,
@@ -401,6 +483,7 @@ do
 end
 local Subscriber
 do
+  local _class_0
   local active_height
   local _parent_0 = Rect
   local _base_0 = {
@@ -414,33 +497,36 @@ do
       self.y = h - active_height
       self.w, self.h = w, active_height
     end,
-    update = function(self, mouseX, mouseY, mouseOver, hoverCondition)
-      if hoverCondition == nil then
-        hoverCondition = self:containsPoint(mouseX, mouseY)
-      end
-      local update = self.needsUpdate
-      self.needsUpdate = false
-      if mouseOver and hoverCondition then
-        if not (self.hovered) then
-          update = true
-          self.hovered = true
-          self.animation:interrupt(false, self.animationQueue)
+    update = function(self, inputState, hoverCondition)
+      do
+        local _with_0 = inputState
+        if hoverCondition == nil then
+          hoverCondition = ((not _with_0.mouseDead and self:containsPoint(_with_0.mouseX, _with_0.mouseY)) or _with_0.displayRequested)
         end
-      else
-        if self.hovered then
-          update = true
-          self.hovered = false
-          self.animation:interrupt(true, self.animationQueue)
+        local update = self.needsUpdate
+        self.needsUpdate = false
+        if (_with_0.mouseInWindow or _with_0.displayRequested) and hoverCondition then
+          if not (self.hovered) then
+            update = true
+            self.hovered = true
+            self.animation:interrupt(false, self.animationQueue)
+          end
+        else
+          if self.hovered then
+            update = true
+            self.hovered = false
+            self.animation:interrupt(true, self.animationQueue)
+          end
         end
+        return update
       end
-      return update
     end
   }
   _base_0.__index = _base_0
   setmetatable(_base_0, _parent_0.__base)
-  local _class_0 = setmetatable({
+  _class_0 = setmetatable({
     __init = function(self)
-      _parent_0.__init(self, 0, 0, 0, 0)
+      _class_0.__parent.__init(self, 0, 0, 0, 0)
       self.hovered = false
       self.needsUpdate = false
     end,
@@ -451,7 +537,10 @@ do
     __index = function(cls, name)
       local val = rawget(_base_0, name)
       if val == nil then
-        return _parent_0[name]
+        local parent = rawget(cls, "__parent")
+        if parent then
+          return parent[name]
+        end
       else
         return val
       end
@@ -472,19 +561,24 @@ do
 end
 local BarAccent
 do
+  local _class_0
   local barSize
   local _parent_0 = Subscriber
   local _base_0 = {
     updateSize = function(self, w, h)
-      _parent_0.updateSize(self, w, h)
+      _class_0.__parent.__base.updateSize(self, w, h)
       self.yPos = h - barSize
+      self.sizeChanged = true
+    end,
+    changeBarSize = function(self, size)
+      barSize = size
     end
   }
   _base_0.__index = _base_0
   setmetatable(_base_0, _parent_0.__base)
-  local _class_0 = setmetatable({
+  _class_0 = setmetatable({
     __init = function(self, ...)
-      return _parent_0.__init(self, ...)
+      return _class_0.__parent.__init(self, ...)
     end,
     __base = _base_0,
     __name = "BarAccent",
@@ -493,7 +587,10 @@ do
     __index = function(cls, name)
       local val = rawget(_base_0, name)
       if val == nil then
-        return _parent_0[name]
+        local parent = rawget(cls, "__parent")
+        if parent then
+          return parent[name]
+        end
       else
         return val
       end
@@ -514,19 +611,24 @@ do
 end
 local ProgressBar
 do
+  local _class_0
+  local minHeight, maxHeight
   local _parent_0 = Subscriber
   local _base_0 = {
-    clickUpSeek = function(self)
-      local x, y = mp.get_mouse_pos()
-      if self:containsPoint(x, y) then
-        return mp.commandv("seek", x * 100 / self.w, "absolute-percent", "keyframes")
+    toggleInactiveVisibility = function(self)
+      local value = self.visible and 0 or minHeight
+      self.animation.initialValue = value
+      if not self.hovered then
+        self.line[6] = value
       end
+      self.visible = not self.visible
+      self.needsUpdate = true
     end,
     stringify = function(self)
       return table.concat(self.line)
     end,
     updateSize = function(self, w, h)
-      _parent_0.updateSize(self, w, h)
+      _class_0.__parent.__base.updateSize(self, w, h)
       self.line[2] = ([[%d,%d]]):format(0, h)
       self.line[8] = ([[%d 0 %d 1 0 1]]):format(w, w)
       return true
@@ -535,8 +637,8 @@ do
       self.line[6] = ([[%g]]):format(value)
       self.needsUpdate = true
     end,
-    update = function(self, mouseX, mouseY, mouseOver)
-      local update = _parent_0.update(self, mouseX, mouseY, mouseOver)
+    update = function(self, inputState)
+      local update = _class_0.__parent.__base.update(self, inputState)
       local position = mp.get_property_number('percent-pos', 0)
       if position ~= self.lastPosition then
         update = true
@@ -548,12 +650,10 @@ do
   }
   _base_0.__index = _base_0
   setmetatable(_base_0, _parent_0.__base)
-  local _class_0 = setmetatable({
+  _class_0 = setmetatable({
     __init = function(self, animationQueue)
       self.animationQueue = animationQueue
-      _parent_0.__init(self)
-      local minHeight = settings['bar-height-inactive'] * 100
-      local maxHeight = settings['bar-height-active'] * 100
+      _class_0.__parent.__init(self)
       self.line = {
         ([[{\an1\bord0\c&H%s&\pos(]]):format(settings['bar-foreground']),
         0,
@@ -572,13 +672,7 @@ do
           return _fn_0(_base_1, ...)
         end
       end)())
-      return mp.add_key_binding("MOUSE_BTN0", (function()
-        local _base_1 = self
-        local _fn_0 = _base_1.clickUpSeek
-        return function(...)
-          return _fn_0(_base_1, ...)
-        end
-      end)())
+      self.visible = true
     end,
     __base = _base_0,
     __name = "ProgressBar",
@@ -587,7 +681,10 @@ do
     __index = function(cls, name)
       local val = rawget(_base_0, name)
       if val == nil then
-        return _parent_0[name]
+        local parent = rawget(cls, "__parent")
+        if parent then
+          return parent[name]
+        end
       else
         return val
       end
@@ -599,6 +696,9 @@ do
     end
   })
   _base_0.__class = _class_0
+  local self = _class_0
+  minHeight = settings['bar-height-inactive'] * 100
+  maxHeight = settings['bar-height-active'] * 100
   if _parent_0.__inherited then
     _parent_0.__inherited(_parent_0, _class_0)
   end
@@ -606,13 +706,24 @@ do
 end
 local ProgressBarBackground
 do
+  local _class_0
+  local minHeight, maxHeight
   local _parent_0 = Subscriber
   local _base_0 = {
+    toggleInactiveVisibility = function(self)
+      local value = self.visible and 0 or minHeight
+      self.animation.initialValue = value
+      if not self.hovered then
+        self.line[4] = value
+      end
+      self.visible = not self.visible
+      self.needsUpdate = true
+    end,
     stringify = function(self)
       return table.concat(self.line)
     end,
     updateSize = function(self, w, h)
-      _parent_0.updateSize(self, w, h)
+      _class_0.__parent.__base.updateSize(self, w, h)
       self.line[2] = ([[%d,%d]]):format(0, h)
       self.line[6] = ([[%d 0 %d 1 0 1]]):format(w, w)
       return true
@@ -621,18 +732,16 @@ do
       self.line[4] = ([[%g]]):format(value)
       self.needsUpdate = true
     end,
-    update = function(self, mouseX, mouseY, mouseOver)
-      return _parent_0.update(self, mouseX, mouseY, mouseOver)
+    update = function(self, inputState)
+      return _class_0.__parent.__base.update(self, inputState)
     end
   }
   _base_0.__index = _base_0
   setmetatable(_base_0, _parent_0.__base)
-  local _class_0 = setmetatable({
+  _class_0 = setmetatable({
     __init = function(self, animationQueue)
       self.animationQueue = animationQueue
-      _parent_0.__init(self)
-      local minHeight = settings['bar-height-inactive'] * 100
-      local maxHeight = settings['bar-height-active'] * 100
+      _class_0.__parent.__init(self)
       self.line = {
         ([[{\an1\bord0\c&H%s&\pos(]]):format(settings['bar-background']),
         0,
@@ -648,6 +757,7 @@ do
           return _fn_0(_base_1, ...)
         end
       end)())
+      self.visible = true
     end,
     __base = _base_0,
     __name = "ProgressBarBackground",
@@ -656,7 +766,10 @@ do
     __index = function(cls, name)
       local val = rawget(_base_0, name)
       if val == nil then
-        return _parent_0[name]
+        local parent = rawget(cls, "__parent")
+        if parent then
+          return parent[name]
+        end
       else
         return val
       end
@@ -668,6 +781,9 @@ do
     end
   })
   _base_0.__class = _class_0
+  local self = _class_0
+  minHeight = settings['bar-height-inactive'] * 100
+  maxHeight = settings['bar-height-active'] * 100
   if _parent_0.__inherited then
     _parent_0.__inherited(_parent_0, _class_0)
   end
@@ -675,96 +791,56 @@ do
 end
 local ChapterMarker
 do
-  local _parent_0 = Subscriber
+  local _class_0
+  local minWidth, maxWidth, minHeight, maxHeight, maxHeightFrac, beforeColor, afterColor
   local _base_0 = {
     stringify = function(self)
-      if self.passed then
-        self.line[2][7] = [[\c&H2D2D2D&]]
-      else
-        self.line[2][7] = [[\c&H7A77F2&]]
-      end
-      if self.hovered or self.animation.isRegistered then
-        return table.concat({
-          table.concat(self.line[1]),
-          table.concat(self.line[2])
-        }, '\n')
-      else
-        return table.concat(self.line[2])
-      end
+      return table.concat(self.line)
     end,
     updateSize = function(self, w, h)
-      self.x = math.floor(w * self.position)
-      self.y = h - settings['hover-zone-height'] * settings['bar-height-inactive']
-      self.line[1][2] = ([[%d,%d]]):format(self.x + 10, h - settings['hover-zone-height'] - 10)
-      self.line[2][2] = ([[%d,%d]]):format(self.x + 10, h)
+      self.line[2] = ([[%d,%d]]):format(math.floor(self.position * w), h)
       return true
     end,
-    animateAlpha = function(self, animation, value)
-      self.line[1][4] = ([[%02X]]):format(value)
-      self.needsUpdate = true
-    end,
     animateSize = function(self, value)
-      self.line[2][4] = ([[%g]]):format(value * 100 + 100)
-      self.line[2][6] = ([[%g]]):format(value * 300 + 100)
+      self.line[4] = ([[%g]]):format((maxWidth - minWidth) * value + minWidth)
+      self.line[6] = ([[%g]]):format((maxHeight * maxHeightFrac - self.minHeight) * value + self.minHeight)
     end,
-    update = function(self, mouseX, mouseY, mouseOver, position)
-      local update = _parent_0.update(self, mouseX, mouseY, mouseOver)
-      local changed = self.passed
-      self.passed = position > self.position
-      update = update or changed ~= self.passed
+    update = function(self, position)
+      local update = false
+      if not self.passed and (position > self.position) then
+        self.line[8] = afterColor
+        self.passed = true
+        update = true
+      elseif self.passed and (position < self.position) then
+        self.line[8] = beforeColor
+        self.passed = false
+        update = true
+      end
       return update
     end
   }
   _base_0.__index = _base_0
-  setmetatable(_base_0, _parent_0.__base)
-  local _class_0 = setmetatable({
-    __init = function(self, animationQueue, title, position, w, h)
-      self.animationQueue, self.position = animationQueue, position
-      _parent_0.__init(self)
-      self.x = math.floor(w * self.position) - 10
-      self.y = h - settings['hover-zone-height'] * settings['bar-height-inactive']
-      self.w = 20
-      self.h = settings['hover-zone-height'] * settings['bar-height-inactive']
+  _class_0 = setmetatable({
+    __init = function(self, position, w, h)
+      self.position = position
       self.line = {
-        {
-          [[{\an2\bord2\c&H7A77F2&\3c&H2D2D2D\fs30\pos(]],
-          ([[%d,%d]]):format(self.x + 10, h - settings['hover-zone-height'] - 10),
-          [[)\alpha&H]],
-          [[FF]],
-          ([[&}%s]]):format(title)
-        },
-        {
-          [[{\an2\bord0\p1\pos(]],
-          ([[%d,%d]]):format(self.x + 10, h),
-          [[)\fscx]],
-          100,
-          [[\fscy]],
-          100,
-          [[\c&H7A77F2&]],
-          [[}m 0 0 l 2 0 2 2 0 2]]
-        }
+        [[{\an2\bord0\p1\pos(]],
+        ([[%d,%d]]):format(math.floor(self.position * w), h),
+        [[)\fscx]],
+        minWidth,
+        [[\fscy]],
+        minHeight,
+        [[\c&H]],
+        beforeColor,
+        [[&}m 0 0 l 1 0 1 1 0 1]]
       }
       self.passed = false
-      self.animation = Animation(255, 0, 0.25, (function()
-        local _base_1 = self
-        local _fn_0 = _base_1.animateAlpha
-        return function(...)
-          return _fn_0(_base_1, ...)
-        end
-      end)())
+      self.minHeight = minHeight
     end,
     __base = _base_0,
-    __name = "ChapterMarker",
-    __parent = _parent_0
+    __name = "ChapterMarker"
   }, {
-    __index = function(cls, name)
-      local val = rawget(_base_0, name)
-      if val == nil then
-        return _parent_0[name]
-      else
-        return val
-      end
-    end,
+    __index = _base_0,
     __call = function(cls, ...)
       local _self_0 = setmetatable({}, _base_0)
       cls.__init(_self_0, ...)
@@ -772,75 +848,90 @@ do
     end
   })
   _base_0.__class = _class_0
-  if _parent_0.__inherited then
-    _parent_0.__inherited(_parent_0, _class_0)
-  end
+  local self = _class_0
+  minWidth = settings['chapter-marker-width'] * 100
+  maxWidth = settings['chapter-marker-width-active'] * 100
+  minHeight = settings['bar-height-inactive'] * 100
+  maxHeight = settings['bar-height-active'] * 100
+  maxHeightFrac = settings['chapter-marker-active-height-fraction']
+  beforeColor = settings['chapter-marker-before']
+  afterColor = settings['chapter-marker-after']
   ChapterMarker = _class_0
 end
 local Chapters
 do
+  local _class_0
+  local minHeight
   local _parent_0 = Subscriber
   local _base_0 = {
     createMarkers = function(self, w, h)
+      self.line = { }
       self.markers = { }
       local totalTime = mp.get_property_number('length', 0)
       local chapters = mp.get_property_native('chapter-list', { })
       for _index_0 = 1, #chapters do
         local chapter = chapters[_index_0]
-        table.insert(self.markers, ChapterMarker(self.animationQueue, chapter.title, chapter.time / totalTime, w, h))
+        local marker = ChapterMarker(chapter.time / totalTime, w, h)
+        table.insert(self.markers, marker)
+        table.insert(self.line, marker:stringify())
       end
+    end,
+    toggleInactiveVisibility = function(self)
+      local value = self.visible and 0 or minHeight
+      for i, marker in ipairs(self.markers) do
+        marker.minHeight = value
+        if not self.hovered then
+          marker.line[6] = value
+        end
+        self.line[i] = marker:stringify()
+      end
+      self.visible = not self.visible
+      self.needsUpdate = true
     end,
     stringify = function(self)
       return table.concat(self.line, '\n')
     end,
+    redrawMarker = function(self, i)
+      self.line[i] = self.markers[i]:stringify()
+    end,
     redrawMarkers = function(self)
-      self.line = { }
-      local _list_0 = self.markers
-      for _index_0 = 1, #_list_0 do
-        local marker = _list_0[_index_0]
-        table.insert(self.line, marker:stringify())
+      for i, marker in ipairs(self.markers) do
+        self.line[i] = marker:stringify()
       end
     end,
     updateSize = function(self, w, h)
-      _parent_0.updateSize(self, w, h)
-      local _list_0 = self.markers
-      for _index_0 = 1, #_list_0 do
-        local marker = _list_0[_index_0]
+      _class_0.__parent.__base.updateSize(self, w, h)
+      for i, marker in ipairs(self.markers) do
         marker:updateSize(w, h)
+        self.line[i] = marker:stringify()
       end
-      self:redrawMarkers()
       return true
     end,
     animateSize = function(self, animation, value)
-      local _list_0 = self.markers
-      for _index_0 = 1, #_list_0 do
-        local marker = _list_0[_index_0]
+      for i, marker in ipairs(self.markers) do
         marker:animateSize(value)
+        self.line[i] = marker:stringify()
       end
       self.needsUpdate = true
     end,
-    update = function(self, mouseX, mouseY, mouseOver)
-      local update = _parent_0.update(self, mouseX, mouseY, mouseOver)
+    update = function(self, inputState)
+      local update = _class_0.__parent.__base.update(self, inputState)
       local currentPosition = mp.get_property_number('percent-pos', 0) * 0.01
-      local _list_0 = self.markers
-      for _index_0 = 1, #_list_0 do
-        local marker = _list_0[_index_0]
-        if marker:update(mouseX, mouseY, mouseOver, currentPosition) then
+      for i, marker in ipairs(self.markers) do
+        if marker:update(currentPosition) then
+          self:redrawMarker(i)
           update = true
         end
-      end
-      if update then
-        self:redrawMarkers()
       end
       return update
     end
   }
   _base_0.__index = _base_0
   setmetatable(_base_0, _parent_0.__base)
-  local _class_0 = setmetatable({
+  _class_0 = setmetatable({
     __init = function(self, animationQueue)
       self.animationQueue = animationQueue
-      _parent_0.__init(self)
+      _class_0.__parent.__init(self)
       self.line = { }
       self.markers = { }
       self.animation = Animation(0, 1, 0.25, (function()
@@ -850,6 +941,7 @@ do
           return _fn_0(_base_1, ...)
         end
       end)())
+      self.visible = true
     end,
     __base = _base_0,
     __name = "Chapters",
@@ -858,7 +950,10 @@ do
     __index = function(cls, name)
       local val = rawget(_base_0, name)
       if val == nil then
-        return _parent_0[name]
+        local parent = rawget(cls, "__parent")
+        if parent then
+          return parent[name]
+        end
       else
         return val
       end
@@ -870,6 +965,8 @@ do
     end
   })
   _base_0.__class = _class_0
+  local self = _class_0
+  minHeight = settings['bar-height-inactive'] * 100
   if _parent_0.__inherited then
     _parent_0.__inherited(_parent_0, _class_0)
   end
@@ -877,20 +974,21 @@ do
 end
 local TimeElapsed
 do
+  local _class_0
   local _parent_0 = BarAccent
   local _base_0 = {
     updateSize = function(self, w, h)
-      _parent_0.updateSize(self, w, h)
-      self.line[2] = ([[%g,%g]]):format(self.position, self.yPos)
+      _class_0.__parent.__base.updateSize(self, w, h)
+      self.line[2] = ([[%g,%g]]):format(self.position, self.yPos - settings['elapsed-bottom-margin'])
       return true
     end,
     animatePos = function(self, animation, value)
       self.position = value
-      self.line[2] = ([[%g,%g]]):format(self.position, self.yPos)
+      self.line[2] = ([[%g,%g]]):format(self.position, self.yPos - settings['elapsed-bottom-margin'])
       self.needsUpdate = true
     end,
-    update = function(self, mouseX, mouseY, mouseOver)
-      local update = _parent_0.update(self, mouseX, mouseY, mouseOver)
+    update = function(self, inputState)
+      local update = _class_0.__parent.__base.update(self, inputState)
       if update or self.hovered then
         local timeElapsed = math.floor(mp.get_property_number('time-pos', 0))
         if timeElapsed ~= self.lastTime then
@@ -904,20 +1002,20 @@ do
   }
   _base_0.__index = _base_0
   setmetatable(_base_0, _parent_0.__base)
-  local _class_0 = setmetatable({
+  _class_0 = setmetatable({
     __init = function(self, animationQueue)
       self.animationQueue = animationQueue
-      _parent_0.__init(self)
+      _class_0.__parent.__init(self)
+      local offscreenPos = settings['elapsed-offscreen-pos']
       self.line = {
         ([[{\fn%s\bord2\fs%d\pos(]]):format(settings.font, settings['time-font-size']),
-        [[-100,0]],
+        ([[%g,0]]):format(offscreenPos),
         ([[)\c&H%s&\3c&H%s&\an1}]]):format(settings['elapsed-foreground'], settings['elapsed-background']),
         0
       }
-      local offscreenPos = settings['elapsed-offscreen-pos']
       self.lastTime = -1
       self.position = offscreenPos
-      self.animation = Animation(offscreenPos, 2, 0.25, (function()
+      self.animation = Animation(offscreenPos, settings['elapsed-left-margin'], 0.25, (function()
         local _base_1 = self
         local _fn_0 = _base_1.animatePos
         return function(...)
@@ -932,7 +1030,10 @@ do
     __index = function(cls, name)
       local val = rawget(_base_0, name)
       if val == nil then
-        return _parent_0[name]
+        local parent = rawget(cls, "__parent")
+        if parent then
+          return parent[name]
+        end
       else
         return val
       end
@@ -951,20 +1052,22 @@ do
 end
 local TimeRemaining
 do
+  local _class_0
   local _parent_0 = BarAccent
   local _base_0 = {
     updateSize = function(self, w, h)
-      _parent_0.updateSize(self, w, h)
-      self.line[2] = ([[%g,%g]]):format(self.position, self.yPos)
+      _class_0.__parent.__base.updateSize(self, w, h)
+      self.position = self.w - self.animation.value
+      self.line[2] = ([[%g,%g]]):format(self.position, self.yPos - settings['remaining-bottom-margin'])
       return true
     end,
     animatePos = function(self, animation, value)
       self.position = self.w - value
-      self.line[2] = ([[%g,%g]]):format(self.position, self.yPos)
+      self.line[2] = ([[%g,%g]]):format(self.position, self.yPos - settings['remaining-bottom-margin'])
       self.needsUpdate = true
     end,
-    update = function(self, mouseX, mouseY, mouseOver)
-      local update = _parent_0.update(self, mouseX, mouseY, mouseOver)
+    update = function(self, inputState)
+      local update = _class_0.__parent.__base.update(self, inputState)
       if update or self.hovered then
         local timeRemaining = math.floor(mp.get_property_number('playtime-remaining', 0))
         if timeRemaining ~= self.lastTime then
@@ -978,10 +1081,10 @@ do
   }
   _base_0.__index = _base_0
   setmetatable(_base_0, _parent_0.__base)
-  local _class_0 = setmetatable({
+  _class_0 = setmetatable({
     __init = function(self, animationQueue)
       self.animationQueue = animationQueue
-      _parent_0.__init(self)
+      _class_0.__parent.__init(self)
       self.line = {
         ([[{\fn%s\bord2\fs%d\pos(]]):format(settings.font, settings['time-font-size']),
         [[-100,0]],
@@ -991,7 +1094,7 @@ do
       local offscreenPos = settings['remaining-offscreen-pos']
       self.lastTime = -1
       self.position = offscreenPos
-      self.animation = Animation(offscreenPos, 4, 0.25, (function()
+      self.animation = Animation(offscreenPos, settings['remaining-right-margin'], 0.25, (function()
         local _base_1 = self
         local _fn_0 = _base_1.animatePos
         return function(...)
@@ -1006,7 +1109,10 @@ do
     __index = function(cls, name)
       local val = rawget(_base_0, name)
       if val == nil then
-        return _parent_0[name]
+        local parent = rawget(cls, "__parent")
+        if parent then
+          return parent[name]
+        end
       else
         return val
       end
@@ -1025,6 +1131,7 @@ do
 end
 local HoverTime
 do
+  local _class_0
   local rightMargin, leftMargin
   local _parent_0 = BarAccent
   local _base_0 = {
@@ -1032,29 +1139,37 @@ do
       self.line[4] = ([[%02X]]):format(value)
       self.needsUpdate = true
     end,
-    update = function(self, mouseX, mouseY, mouseOver)
-      local update = _parent_0.update(self, mouseX, mouseY, mouseOver)
-      if update or self.hovered then
-        if mouseX ~= self.lastX or mouseY ~= self.lastY then
-          self.line[2] = ("%g,%g"):format(math.min(self.w - rightMargin, math.max(leftMargin, mouseX)), self.yPos)
-          self.lastX, self.lastY = mouseX, mouseY
-          local hoverTime = mp.get_property_number('length', 0) * mouseX / self.w
-          if hoverTime ~= self.lastTime and (self.hovered or self.animation.isRegistered) then
-            update = true
-            self.line[6] = ([[%d:%02d:%02d]]):format(math.floor(hoverTime / 3600), math.floor((hoverTime / 60) % 60), math.floor(hoverTime % 60))
-            self.lastTime = hoverTime
+    updateSize = function(self, w, h)
+      _class_0.__parent.__base.updateSize(self, w, h)
+      self.yposChanged = true
+    end,
+    update = function(self, inputState)
+      do
+        local _with_0 = inputState
+        local update = _class_0.__parent.__base.update(self, inputState, (not _with_0.mouseDead and self:containsPoint(_with_0.mouseX, _with_0.mouseY) and _with_0.mouseInWindow))
+        if update or self.hovered then
+          if _with_0.mouseX ~= self.lastX or self.sizeChanged then
+            self.line[2] = ("%g,%g"):format(math.min(self.w - rightMargin, math.max(leftMargin, _with_0.mouseX)), self.yPos - settings['hover-time-bottom-margin'])
+            self.sizeChanged = false
+            self.lastX = _with_0.mouseX
+            local hoverTime = mp.get_property_number('duration', 0) * _with_0.mouseX / self.w
+            if hoverTime ~= self.lastTime and (self.hovered or self.animation.isRegistered) then
+              update = true
+              self.line[6] = ([[%d:%02d:%02d]]):format(math.floor(hoverTime / 3600), math.floor((hoverTime / 60) % 60), math.floor(hoverTime % 60))
+              self.lastTime = hoverTime
+            end
           end
         end
+        return update
       end
-      return update
     end
   }
   _base_0.__index = _base_0
   setmetatable(_base_0, _parent_0.__base)
-  local _class_0 = setmetatable({
+  _class_0 = setmetatable({
     __init = function(self, animationQueue)
       self.animationQueue = animationQueue
-      _parent_0.__init(self)
+      _class_0.__parent.__init(self)
       self.line = {
         ([[{\fn%s\bord2\fs%d\pos(]]):format(settings.font, settings['hover-time-font-size']),
         [[-100,0]],
@@ -1065,7 +1180,6 @@ do
       }
       self.lastTime = 0
       self.lastX = -1
-      self.lastY = -1
       self.position = -100
       self.animation = Animation(255, 0, 0.25, (function()
         local _base_1 = self
@@ -1082,7 +1196,10 @@ do
     __index = function(cls, name)
       local val = rawget(_base_0, name)
       if val == nil then
-        return _parent_0[name]
+        local parent = rawget(cls, "__parent")
+        if parent then
+          return parent[name]
+        end
       else
         return val
       end
@@ -1104,6 +1221,7 @@ do
 end
 local PauseIndicator
 do
+  local _class_0
   local scaleTags
   local _base_0 = {
     stringify = function(self)
@@ -1132,10 +1250,10 @@ do
     end
   }
   _base_0.__index = _base_0
-  local _class_0 = setmetatable({
+  _class_0 = setmetatable({
     __init = function(self, queue, aggregator, paused)
       self.aggregator = aggregator
-      local w, h = mp.get_screen_size()
+      local w, h = mp.get_osd_size()
       w, h = 0.5 * w, 0.5 * h
       self.line = {
         ([[{\an5\bord0\c&H%s&]]):format(settings['pause-indicator-background']),
@@ -1157,10 +1275,10 @@ do
       }
       if paused then
         self.line[8] = "m 15 0 l 60 0 b 75 0 75 0 75 15 l 75 60 b 75 75 75 75 60 75 l 15 75 b 0 75 0 75 0 60 l 0 15 b 0 0 0 0 15 0 m 23 20 l 23 55 33 55 33 20 m 42 20 l 42 55 52 55 52 20\n"
-        self.line[16] = [[m 0 0 l 0 75 m 23 20 l 23 55 33 55 33 20 m 42 20 l 42 55 52 55 52 20 m 75 0 l 75 75]]
+        self.line[16] = [[m 0 0 m 75 75 m 23 20 l 23 55 33 55 33 20 m 42 20 l 42 55 52 55 52 20]]
       else
         self.line[8] = "m 15 0 l 60 0 b 75 0 75 0 75 15 l 75 60 b 75 75 75 75 60 75 l 15 75 b 0 75 0 75 0 60 l 0 15 b 0 0 0 0 15 0 m 23 18 l 23 57 58 37.5\n"
-        self.line[16] = [[m 0 0 l 0 75 m 23 18 l 23 57 58 37.5 m 75 0 l 75 75]]
+        self.line[16] = [[m 0 0 m 75 75 m 23 18 l 23 57 58 37.5]]
       end
       do
         local _base_1 = self
@@ -1196,14 +1314,15 @@ do
 end
 local Playlist
 do
+  local _class_0
   local _parent_0 = Subscriber
   local _base_0 = {
     updateSize = function(self, w, h)
-      _parent_0.updateSize(self, w, h)
+      _class_0.__parent.__base.updateSize(self, w, h)
       self.topBox.w = w
     end,
     animatePos = function(self, animation, value)
-      self.line[2] = ([[4,%g]]):format(value)
+      self.line[2] = ([[%g,%g]]):format(settings['title-left-margin'], value)
       self.needsUpdate = true
     end,
     updatePlaylistInfo = function(self)
@@ -1213,25 +1332,29 @@ do
       self.line[4] = ([[%d/%d – %s]]):format(position + 1, total, title)
       self.needsUpdate = true
     end,
-    update = function(self, mouseX, mouseY, mouseOver)
-      return _parent_0.update(self, mouseX, mouseY, mouseOver, (self:containsPoint(mouseX, mouseY) or self.topBox:containsPoint(mouseX, mouseY)))
+    update = function(self, inputState)
+      do
+        local _with_0 = inputState
+        _class_0.__parent.__base.update(self, inputState, ((not _with_0.mouseDead and (self:containsPoint(_with_0.mouseX, _with_0.mouseY) or self.topBox:containsPoint(_with_0.mouseX, _with_0.mouseY))) or _with_0.displayRequested))
+        return _with_0
+      end
     end
   }
   _base_0.__index = _base_0
   setmetatable(_base_0, _parent_0.__base)
-  local _class_0 = setmetatable({
+  _class_0 = setmetatable({
     __init = function(self, animationQueue)
       self.animationQueue = animationQueue
-      _parent_0.__init(self)
+      _class_0.__parent.__init(self)
       local offscreenPos = settings['title-offscreen-pos']
       self.line = {
         ([[{\an7\fn%s\bord2\fs%d\pos(]]):format(settings.font, settings['title-font-size']),
-        ([[4,%g]]):format(offscreenPos),
+        ([[%g,%g]]):format(settings['title-left-margin'], offscreenPos),
         ([[)\c&H%s&\3c&H%s&}]]):format(settings['title-foreground'], settings['title-background']),
         0
       }
       self.topBox = Rect(0, 0, 0, settings['top-hover-zone-height'])
-      self.animation = Animation(offscreenPos, 0, 0.25, (function()
+      self.animation = Animation(offscreenPos, settings['title-top-margin'], 0.25, (function()
         local _base_1 = self
         local _fn_0 = _base_1.animatePos
         return function(...)
@@ -1246,7 +1369,10 @@ do
     __index = function(cls, name)
       local val = rawget(_base_0, name)
       if val == nil then
-        return _parent_0[name]
+        local parent = rawget(cls, "__parent")
+        if parent then
+          return parent[name]
+        end
       else
         return val
       end
@@ -1265,22 +1391,51 @@ do
 end
 local aggregator = OSDAggregator()
 local animationQueue = AnimationQueue(aggregator)
-local progressBar = ProgressBar(animationQueue)
-local progressBarBackground = ProgressBarBackground(animationQueue)
-local chapters = Chapters(animationQueue)
-local timeElapsed = TimeElapsed(animationQueue)
-local timeRemaining = TimeRemaining(animationQueue)
-local hoverTime = HoverTime(animationQueue)
-local playlist = Playlist(animationQueue)
-aggregator:addSubscriber(progressBarBackground)
-aggregator:addSubscriber(progressBar)
-aggregator:addSubscriber(chapters)
-aggregator:addSubscriber(timeElapsed)
-aggregator:addSubscriber(timeRemaining)
-aggregator:addSubscriber(hoverTime)
-aggregator:addSubscriber(playlist)
+local chapters, progressBar, barBackground, elapsedTime, remainingTime, hoverTime
+if settings['enable-bar'] then
+  progressBar = ProgressBar(animationQueue)
+  barBackground = ProgressBarBackground(animationQueue)
+  aggregator:addSubscriber(barBackground)
+  aggregator:addSubscriber(progressBar)
+  mp.add_key_binding("mouse_btn0", "seek-to-mouse", function()
+    local x, y = mp.get_mouse_pos()
+    return mp.add_timeout(0.001, function()
+      if not aggregator.inputState.mouseDead and progressBar:containsPoint(x, y) then
+        return mp.commandv("seek", x * 100 / progressBar.w, "absolute-percent+" .. tostring(settings['seek-precision']))
+      end
+    end)
+  end)
+  mp.add_key_binding("c", "toggle-inactive-bar", function()
+    barBackground:toggleInactiveVisibility()
+    progressBar:toggleInactiveVisibility()
+    if chapters then
+      return chapters:toggleInactiveVisibility()
+    end
+  end)
+end
+if settings['enable-chapter-markers'] then
+  chapters = Chapters(animationQueue)
+  aggregator:addSubscriber(chapters)
+end
+if settings['enable-elapsed-time'] then
+  elapsedTime = TimeElapsed(animationQueue)
+  aggregator:addSubscriber(elapsedTime)
+end
+if settings['enable-remaining-time'] then
+  remainingTime = TimeRemaining(animationQueue)
+  aggregator:addSubscriber(remainingTime)
+end
+if settings['enable-hover-time'] then
+  hoverTime = HoverTime(animationQueue)
+  aggregator:addSubscriber(hoverTime)
+end
+local playlist = nil
+if settings['enable-title'] then
+  playlist = Playlist(animationQueue)
+  aggregator:addSubscriber(playlist)
+end
 if settings['pause-indicator'] then
-  local notFrameStepping = true
+  local notFrameStepping = false
   local PauseIndicatorWrapper
   PauseIndicatorWrapper = function(event, paused)
     if notFrameStepping then
@@ -1291,13 +1446,13 @@ if settings['pause-indicator'] then
       end
     end
   end
-  mp.add_key_binding('.', 'torque_progbar_stepforward', function()
+  mp.add_key_binding('.', 'step-forward', function()
     notFrameStepping = false
     return mp.commandv('frame_step')
   end, {
     repeatable = true
   })
-  mp.add_key_binding(',', 'torque_progbar_stepbackward', function()
+  mp.add_key_binding(',', 'step-backward', function()
     notFrameStepping = false
     return mp.commandv('frame_back_step')
   end, {
@@ -1305,12 +1460,57 @@ if settings['pause-indicator'] then
   })
   mp.observe_property('pause', 'bool', PauseIndicatorWrapper)
 end
+local streamMode = false
 local initDraw
 initDraw = function()
   mp.unregister_event(initDraw)
-  local width, height = mp.get_screen_size()
-  chapters:createMarkers(width, height)
-  playlist:updatePlaylistInfo()
+  local width, height = mp.get_osd_size()
+  if chapters then
+    chapters:createMarkers(width, height)
+  end
+  if playlist then
+    playlist:updatePlaylistInfo()
+  end
+  local duration = mp.get_property('duration')
+  if not (streamMode or duration) then
+    if progressBar then
+      aggregator:removeSubscriber(progressBar.aggregatorIndex)
+      aggregator:removeSubscriber(barBackground.aggregatorIndex)
+    end
+    if chapters then
+      aggregator:removeSubscriber(chapters.aggregatorIndex)
+    end
+    if hoverTime then
+      aggregator:removeSubscriber(hoverTime.aggregatorIndex)
+    end
+    if remainingTime then
+      aggregator:removeSubscriber(remainingTime.aggregatorIndex)
+    end
+    if elapsedTime then
+      elapsedTime:changeBarSize(0)
+      aggregator:forceResize()
+    end
+    streamMode = true
+  elseif streamMode and duration then
+    if progressBar then
+      aggregator:addSubscriber(barBackground)
+      aggregator:addSubscriber(progressBar)
+    end
+    if chapters then
+      aggregator:addSubscriber(chapters)
+    end
+    if hoverTime then
+      aggregator:addSubscriber(hoverTime)
+    end
+    if remainingTime then
+      aggregator:addSubscriber(remainingTime)
+    end
+    if elapsedTime then
+      elapsedTime:changeBarSize(settings['bar-height-active'])
+    end
+    aggregator:forceResize()
+    streamMode = false
+  end
   return mp.command('script-message-to osc disable-osc')
 end
 local fileLoaded

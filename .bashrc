@@ -106,10 +106,10 @@ alias ffccache='fc-cache --really-force --verbose'
 alias fdupes='find -not -empty -type f -printf "%s\n" | sort -rn | uniq -d | xargs -I{} -n1 find -type f -size {}c -print0 | xargs -0 md5sum | sort | uniq -w32 --all-repeated=separate'
 
 # connect to Gettysburg Xubuntu workstations
-alias ssx="ssh -Y -c blowfish-cbc,arcfour cs21.cc.gettysburg.edu -p 222 -l duncjo01"
+alias ssx="ssh -Y -c blowfish-cbc,arcfour cs20.cc.gettysburg.edu -p 222 -l duncjo01"
 alias parallela="ssh -Y -c blowfish-cbc,arcfour 138.234.44.100 -p 222 -l duncjo01"
-function gput () { scp -P 222 $1 duncjo01@cs21.cc.gettysburg.edu:~/public_html/; }
-function gget () { scp -P 222  duncjo01@cs21.cc.gettysburg.edu:~/Desktop/$1 ~/Desktop/; }
+function gput () { scp -P 222 $1 duncjo01@cs20.cc.gettysburg.edu:~/public_html/; }
+function gget () { scp -P 222  duncjo01@cs20.cc.gettysburg.edu:~/Desktop/$1 ~/Desktop/; }
 
 # Alias some git commands
 alias status="git status"

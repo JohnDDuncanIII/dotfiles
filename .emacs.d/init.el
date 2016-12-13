@@ -125,18 +125,18 @@
   (global-set-key "\M-p" "\C-u1\M-v")
 
   ;; Restore the cursor when you scroll past it on the buffer
-  ;;;(require 'scroll-restore)
-  ;;;(scroll-restore-mode 1)
+  (require 'scroll-restore)
+  (scroll-restore-mode 1)
   ;; Allow scroll-restore to modify the cursor face
-  ;;;(setq scroll-restore-handle-cursor t)
+  (setq scroll-restore-handle-cursor t)
   ;; Make the cursor invisible while POINT is off-screen
-  ;;;(setq scroll-restore-cursor-type nil)
+  (setq scroll-restore-cursor-type nil)
   ;; Jump back to the original cursor position after scrolling
-  ;;;(setq scroll-restore-jump-back t)
+  (setq scroll-restore-jump-back t)
   ;; Toggle scroll-restore-mode with the Scroll Lock key
-  ;;;(global-set-key (kbd "<Scroll_Lock>") 'scroll-restore-mode)
-  ;;;(setq scroll-preserve-screen-position t
-  ;;;scroll-conservatively 0)
+  (global-set-key (kbd "<Scroll_Lock>") 'scroll-restore-mode)
+  ;;(setq scroll-preserve-screen-position t
+  ;;        scroll-conservatively 0)
 
   ;; Display file path in the title bar
   (setq frame-title-format

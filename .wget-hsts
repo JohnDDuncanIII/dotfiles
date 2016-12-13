@@ -1,0 +1,5 @@
+# HSTS 1.0 Known Hosts database for GNU Wget.
+# Edit at your own risk.
+# <hostname>[:<port>]	<incl. subdomains>	<created>	<max-age>
+www.w3.org	0	1	1474754455	15552000
+upload.wikimedia.org	0	1	1472590076	31536000

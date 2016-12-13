@@ -13,9 +13,9 @@ xsetroot -solid '#505075' &
 #/opt/pkg/bin/wmmemmon --light-color rgb:25/E3/DC --backlight &
 /opt/pkg/bin/wmnd -i off -w needle &
 /opt/pkg/bin/wmusic &
-export MPD_HOST=localhost
-export MPD_PORT=6600
-/opt/pkg/bin/WMmp --light-color rgb:25/E3/DC &
+#export MPD_HOST=localhost
+#export MPD_PORT=6600
+#/opt/pkg/bin/WMmp --light-color rgb:25/E3/DC &
 /usr/local/bin/wmMatrix &
 /usr/local/bin/wmSpaceWeather &
 

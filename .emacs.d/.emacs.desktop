@@ -2,162 +2,54 @@
 ;; --------------------------------------------------------------------------
 ;; Desktop File for Emacs
 ;; --------------------------------------------------------------------------
-;; Created Sun Jun  5 00:30:53 2016
+;; Created Tue Dec 13 01:21:15 2016
 ;; Desktop file format version 208
-;; Emacs version 25.1.50.1
+;; Emacs version 25.1.1
 
 ;; Global section:
-(setq desktop-saved-frameset [frameset 1 (22355 43773 929464 0) (desktop . "208") "John@Johns-MBP-2.home" nil nil ((((font-backend mac-ct) (fontsize . 0) (font . "-*-System_16-normal-normal-normal-*-16-*-*-*-p-0-iso10646-1") (border-width . 0) (internal-border-width . 2) (vertical-scroll-bars . right) (horizontal-scroll-bars) (foreground-color . "#333333") (background-color . "#FFFFFF") (line-spacing) (left-fringe . 8) (right-fringe . 8) (menu-bar-lines . 1) (tool-bar-lines . 1) (title) (icon-type) (auto-raise) (auto-lower) (cursor-type . box) (scroll-bar-width . 15) (scroll-bar-height . 0) (alpha) (fullscreen) (display . "Johns-MBP-2.home") (display-type . color) (background-mode . light) (cursor-color . "#21BDFF") (visibility) (minibuffer) (frameset--id . "4D80-34E4-9C28-3F6C") (frameset--mini nil . "E2E0-BA99-DEB2-8841") (modeline . t) (unsplittable) (right-divider-width . 0) (bottom-divider-width . 0) (icon-name) (explicit-name) (tool-bar-position . top) (height . 41) (width . 23) (left . 112) (top . 47)) ((min-height . 4) (min-width . 11) (min-height-ignore . 2) (min-width-ignore . 11) (min-height-safe . 1) (min-width-safe . 2) (min-pixel-height . 64) (min-pixel-width . 77) (min-pixel-height-ignore . 32) (min-pixel-width-ignore . 77) (min-pixel-height-safe . 16) (min-pixel-width-safe . 14)) leaf (last . t) (pixel-width . 192) (pixel-height . 656) (total-width . 27) (total-height . 41) (normal-height . 1.0) (normal-width . 1.0) (buffer "*scratch*" (selected . t) (hscroll . 0) (fringes 8 8 nil) (margins 4) (scroll-bars nil 3 t nil 0 nil) (vscroll . 0) (dedicated) (point . 146) (start . 1))) (((font-backend mac-ct) (fontsize . 0) (font . "-*-System_16-normal-normal-normal-*-16-*-*-*-p-0-iso10646-1") (border-width . 0) (internal-border-width . 2) (vertical-scroll-bars . right) (horizontal-scroll-bars) (foreground-color . "#333333") (background-color . "#FFFFFF") (line-spacing) (left-fringe . 8) (right-fringe . 8) (menu-bar-lines . 1) (tool-bar-lines . 1) (title) (icon-type) (auto-raise) (auto-lower) (cursor-type . box) (scroll-bar-width . 15) (scroll-bar-height . 0) (alpha) (fullscreen) (display . "Johns-MBP-2.home") (display-type . color) (background-mode . light) (cursor-color . "#21BDFF") (visibility) (frameset--id . "B6F2-D3B5-AA79-BBCD") (frameset--mini t) (modeline . t) (minibuffer . t) (unsplittable) (right-divider-width . 0) (bottom-divider-width . 0) (icon-name) (explicit-name) (tool-bar-position . top) (height . 40) (width . 120) (left . 140) (top . 23)) ((min-height . 4) (min-width . 11) (min-height-ignore . 2) (min-width-ignore . 11) (min-height-safe . 1) (min-width-safe . 2) (min-pixel-height . 64) (min-pixel-width . 77) (min-pixel-height-ignore . 32) (min-pixel-width-ignore . 77) (min-pixel-height-safe . 16) (min-pixel-width-safe . 14)) leaf (pixel-width . 871) (pixel-height . 624) (total-width . 124) (total-height . 39) (normal-height . 1.0) (normal-width . 1.0) (buffer "*scratch*" (selected) (hscroll . 0) (fringes 8 8 nil) (margins 4) (scroll-bars nil 3 t nil 0 nil) (vscroll . 0) (dedicated) (point . 1) (start . 1))) (((font-backend mac-ct) (fontsize . 0) (font . "-*-System_16-normal-normal-normal-*-16-*-*-*-p-0-iso10646-1") (border-width . 0) (internal-border-width . 2) (vertical-scroll-bars . right) (horizontal-scroll-bars) (foreground-color . "#333333") (background-color . "#FFFFFF") (line-spacing) (left-fringe . 8) (right-fringe . 8) (menu-bar-lines . 1) (tool-bar-lines . 1) (title) (icon-type) (auto-raise) (auto-lower) (cursor-type . box) (scroll-bar-width . 15) (scroll-bar-height . 0) (alpha) (fullscreen) (display . "Johns-MBP-2.home") (display-type . color) (background-mode . light) (cursor-color . "#21BDFF") (visibility . t) (environment) (frameset--id . "E2E0-BA99-DEB2-8841") (frameset--mini t . t) (modeline . t) (minibuffer . t) (unsplittable) (right-divider-width . 0) (bottom-divider-width . 0) (icon-name) (explicit-name) (tool-bar-position . top) (height . 35) (width . 115) (left . 121) (top . 84)) ((min-height . 4) (min-width . 11) (min-height-ignore . 3) (min-width-ignore . 11) (min-height-safe . 1) (min-width-safe . 2) (min-pixel-height . 64) (min-pixel-width . 77) (min-pixel-height-ignore . 48) (min-pixel-width-ignore . 77) (min-pixel-height-safe . 16) (min-pixel-width-safe . 14)) leaf (pixel-width . 836) (pixel-height . 544) (total-width . 119) (total-height . 34) (normal-height . 1.0) (normal-width . 1.0) (buffer "*scratch*" (selected) (hscroll . 0) (fringes 8 8 nil) (margins 4) (scroll-bars nil 3 t nil 0 nil) (vscroll . 0) (dedicated) (point . 1) (start . 1))))])
+(setq desktop-saved-frameset [frameset 1 (22607 37723 836965 0) (desktop . "208") "John@dhcp-220-127.cc.gettysburg.edu" nil nil ((((font-backend mac-ct) (fontsize . 0) (font . "-*-System_16-normal-normal-normal-*-16-*-*-*-p-0-iso10646-1") (border-width . 0) (internal-border-width . 2) (vertical-scroll-bars . right) (horizontal-scroll-bars) (foreground-color . "#333333") (background-color . "white") (line-spacing) (left-fringe . 8) (right-fringe . 8) (menu-bar-lines . 1) (tool-bar-lines . 1) (title) (icon-type) (auto-raise) (auto-lower) (cursor-type . box) (scroll-bar-width . 15) (scroll-bar-height . 0) (alpha) (fullscreen) (display . "dhcp-212-214.cc.gettysburg.edu") (display-type . color) (background-mode . light) (cursor-color . "#21BDFF") (visibility) (minibuffer) (frameset--id . "4D80-34E4-9C28-3F6C") (frameset--mini nil . "E2E0-BA99-DEB2-8841") (modeline . t) (unsplittable) (right-divider-width . 0) (bottom-divider-width . 0) (icon-name) (explicit-name) (tool-bar-position . top) (height . 41) (width . 23) (left . 112) (top . 47)) ((min-height . 4) (min-width . 10) (min-height-ignore . 2) (min-width-ignore . 7) (min-height-safe . 1) (min-width-safe . 2) (min-pixel-height . 64) (min-pixel-width . 70) (min-pixel-height-ignore . 32) (min-pixel-width-ignore . 49) (min-pixel-height-safe . 16) (min-pixel-width-safe . 14)) leaf (last . t) (pixel-width . 192) (pixel-height . 656) (total-width . 27) (total-height . 41) (normal-height . 1.0) (normal-width . 1.0) (buffer "*scratch*" (selected) (hscroll . 0) (fringes 8 8 nil) (margins nil) (scroll-bars nil 3 t nil 0 nil) (vscroll . 0) (dedicated) (point . 146) (start . 1))) (((font-backend mac-ct) (fontsize . 0) (font . "-*-System_16-normal-normal-normal-*-16-*-*-*-p-0-iso10646-1") (border-width . 0) (internal-border-width . 2) (vertical-scroll-bars . right) (horizontal-scroll-bars) (foreground-color . "#333333") (background-color . "white") (line-spacing) (left-fringe . 8) (right-fringe . 8) (menu-bar-lines . 1) (tool-bar-lines . 1) (title) (icon-type) (auto-raise) (auto-lower) (cursor-type . box) (scroll-bar-width . 15) (scroll-bar-height . 0) (alpha) (fullscreen) (display . "dhcp-212-214.cc.gettysburg.edu") (display-type . color) (background-mode . light) (cursor-color . "#21BDFF") (visibility) (frameset--id . "B6F2-D3B5-AA79-BBCD") (frameset--mini t) (modeline . t) (minibuffer . t) (unsplittable) (right-divider-width . 0) (bottom-divider-width . 0) (icon-name) (explicit-name) (tool-bar-position . top) (height . 40) (width . 120) (left . 140) (top . 23)) ((min-height . 4) (min-width . 10) (min-height-ignore . 2) (min-width-ignore . 7) (min-height-safe . 1) (min-width-safe . 2) (min-pixel-height . 64) (min-pixel-width . 70) (min-pixel-height-ignore . 32) (min-pixel-width-ignore . 49) (min-pixel-height-safe . 16) (min-pixel-width-safe . 14)) leaf (pixel-width . 871) (pixel-height . 624) (total-width . 124) (total-height . 39) (normal-height . 1.0) (normal-width . 1.0) (buffer "*scratch*" (selected) (hscroll . 0) (fringes 8 8 nil) (margins nil) (scroll-bars nil 3 t nil 0 nil) (vscroll . 0) (dedicated) (point . 1) (start . 1))) (((font-backend mac-ct) (fontsize . 0) (font . "-*-System_16-normal-normal-normal-*-16-*-*-*-p-0-iso10646-1") (border-width . 0) (internal-border-width . 2) (vertical-scroll-bars . right) (horizontal-scroll-bars) (foreground-color . "#333333") (background-color . "white") (line-spacing) (left-fringe . 8) (right-fringe . 8) (menu-bar-lines . 1) (tool-bar-lines . 1) (title) (icon-type) (auto-raise) (auto-lower) (cursor-type . box) (scroll-bar-width . 15) (scroll-bar-height . 0) (alpha) (fullscreen) (display-type . color) (background-mode . light) (cursor-color . "#21BDFF") (environment) (display . "dhcp-212-214.cc.gettysburg.edu") (visibility . t) (frameset--id . "E2E0-BA99-DEB2-8841") (frameset--mini t . t) (modeline . t) (minibuffer . t) (unsplittable) (right-divider-width . 0) (bottom-divider-width . 0) (icon-name) (explicit-name) (tool-bar-position . top) (height . 45) (width . 131) (left . 430) (top . 0)) ((min-height . 4) (min-width . 10) (min-height-ignore . 3) (min-width-ignore . 8) (min-height-safe . 1) (min-width-safe . 2) (min-pixel-height . 64) (min-pixel-width . 70) (min-pixel-height-ignore . 48) (min-pixel-width-ignore . 56) (min-pixel-height-safe . 16) (min-pixel-width-safe . 14)) leaf (pixel-width . 948) (pixel-height . 704) (total-width . 135) (total-height . 44) (normal-height . 1.0) (normal-width . 1.0) (buffer "index.html.en" (selected . t) (hscroll . 0) (fringes 8 8 nil) (margins 1) (scroll-bars nil 3 t nil 0 nil) (vscroll . 0) (dedicated) (point . 1) (start . 1))))])
 (setq desktop-missing-file-warning nil)
 (setq tags-file-name nil)
 (setq tags-table-list nil)
-(setq search-ring '("getServ" "getService" "ad_dialog_load" "dai" "gnus" "mfWrapUpdateMessageHeaders" "mfDisplayFace" "xface" "xf" "xface" "mfD" "mfDisplay" "mfDisplayFace" "mfWrapUpdateMessageHeaders" "mfDisplayFace" "mfLoadPre"))
+(setq search-ring '("webvtt" "layout" "layout." "monthnames" "table" "dCount" "day" "var n" "/day" "day" "temp" "graph" "gput" "h1" "mcluhan" "deleuze"))
 (setq regexp-search-ring nil)
 (setq register-alist nil)
-(setq file-name-history '("~/.emacs.d/" "/Users/John/Desktop/irc2html.htm" "/Users/John/Desktop/SeaMonkey staging/extensions/MessageFaces stuff/MessageFaces/CHANGELOG" "~/.emacs.d/" "~/.emacs.d/init.el" "/Users/John/Desktop/README.md" "~/.emacs.d/" "/Users/John/Desktop/HW4_new.tex" "/Users/John/Desktop/collatz.c" "~/.emacs.d/" "~/.emacs.d/init.el" "~/.emacs.d/" "~/.emacs.d/init.el" "~/.emacs.d/" "" "~/.emacs.d/tabbar/aquamacs-tabbar.el" "~/.emacs.d/" "~/.emacs.d/init.el" "~/.bashrc" "~/.emacs.d/" "/Users/John/test.txt" "~/.emacs.d/" "/Users/John/Desktop/binary.scm" "~/.emacs.d/"))
+(setq file-name-history '("/ssh:duncjo01@cs20.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/media/cv.html" "/ssh:duncjo01@cs20.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/scripts/weather.js" "/Users/John/Library/Application Support/SeaMonkey/Profiles/SeaMonkey.default/user.js" "/ssh:duncjo01@cs20.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/scripts/weather.js" "/ssh:duncjo01@cs20.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/about.html" "~/.bashrc" "/ssh:duncjo01@cs20.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/styles/bisqw_2.css" "/ssh:duncjo01@cs20.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/index.html" "~/.emacs.d/init.el" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/index.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/scripts/border_index.js" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/scripts/weather.js" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/styles/site.css" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/styles/bisqw_2.css" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/styles/bisqw_1.css" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/styles/bisqw_0.css" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/media/cv.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/scripts/border.js" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/index.html" "~/.emacs.d/init.el" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/scripts/border_index.js" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/styles/" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/about.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/scripts/border.js" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/styles/site.css" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/scripts/weather.js" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/styles/bisqw_2.css" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/styles/bisqw_1.css" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/styles/bisqw_0.css" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/styles/resume.css" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/styles/css2.css" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/media/cv.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/styles/resume.css" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/styles/css3.css" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/media/cv.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/styles/css3.css" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/styles/css1.css" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/styles/css2.css" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/styles/.css2" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/writings/" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/scripts/border.js" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/scripts/border_index.js" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/weather/weather.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/styles/suppstyle.css" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/styles/site.css" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/writings/library/silicon_ideology.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/writings/internet/internet.css" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/writings/internet/" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/about.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/portfolio.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/weather/weather.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/index.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/weather/weather.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/portfolio.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/about.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/writings/library/hacker_manifesto.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/writings/" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/writings/index.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/index.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/writings/index.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/about.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/portfolio.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/weather/weather.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/portfolio.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/weather/weather.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/GettysburgMonumentsMap/index.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/about.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/writings/index.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/about.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/writings/index.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/scripts/weather.js" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/scripts/border_index.js" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/styles/site.css" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/index.html" "~/.emacs.d/init.el" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/index.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/scripts/border.js" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/index.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/scripts/border.js" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/scripts/weather.js" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/scripts/border_index.js" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/media/cv.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/writings/source/midi.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/styles/bisqwit.css" "~/.emacs.d/init.el" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/media/cv.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/MessageFaces/" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/styles/site.css" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/styles/resume.css" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/index.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/styles/site.css" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/styles/resume.css" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/media/cv.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/writings/0_maxms.html" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/scripts/mktree.js" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/assets/scripts/" "~/.emacs.d/init.el" "/ssh:duncjo01@cs21.cc.gettysburg.edu#222:/Accounts/turing/students/s17/duncjo01/public_html/index.html" "~/.emacs.d/init.el"))
 
 ;; Buffer section -- buffers listed in same order as in buffer list:
 (desktop-create-buffer 208
-  "/Users/John/.bashrc"
-  ".bashrc"
-  'sh-mode
+  "/Library/WebServer/Documents/index.html.en"
+  "index.html.en"
+  'html-mode
   '(indent-guide-mode linum-mode global-whitespace-mode)
-  1732
-  '(1975 nil)
-  nil
-  nil
-  '((tab-width . 4) (buffer-file-coding-system . utf-8-unix))
-  '((mark-ring (3190 3191 3056 1745 1932 1938 1912 1918 1888 1894 3228 2201 221 659 643 1732))))
-
-(desktop-create-buffer 208
-  "/Users/John/.xresources"
-  ".xresources"
-  'conf-xdefaults-mode
-  '(indent-guide-mode linum-mode global-whitespace-mode)
-  5058
-  '(10034 nil)
-  nil
-  nil
-  '((tab-width . 4) (buffer-file-coding-system . undecided-unix))
-  '((mark-ring (6588 5278 4934 4664 4432 4214 4231 4252 4282 4359 4380 4032 3932 3850 3824 5058))))
-
-(desktop-create-buffer 208
-  "/Users/John/.emacs.d/init.el"
-  "init.el"
-  'emacs-lisp-mode
-  '(indent-guide-mode linum-mode global-whitespace-mode)
-  450
-  '(655 nil)
-  nil
-  nil
-  '((tab-width . 4) (buffer-file-coding-system . prefer-utf-8-unix))
-  '((mark-ring (666 609 598 562 750 655 610 561 550 550 750 1619 899 869 911 450))))
-
-(desktop-create-buffer 208
-  "/Users/John/.xinitrc"
-  ".xinitrc"
-  'sh-mode
-  '(indent-guide-mode linum-mode global-whitespace-mode)
-  639
-  '(891 nil)
-  nil
+  1
+  '(nil nil)
+  t
   nil
   '((buffer-file-coding-system . undecided-unix))
-  '((mark-ring (857 1031 183 90 114 114 1175 689 1478 1396 1396 689 689 101 90 640))))
-
-(desktop-create-buffer 208
-  "/Users/John/Library/Fonts/README.md"
-  "README.md"
-  'fundamental-mode
-  '(indent-guide-mode linum-mode global-whitespace-mode)
-  3980
-  '(4433 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . utf-8-unix))
-  '((mark-ring (4426 4389 4388 4494 379 655 3777 3776 3748 3746 3745 4053 4075 4009 3996 3980))))
-
-(desktop-create-buffer 208
-  "/Users/John/Library/Application Support/SeaMonkey/Profiles/SeaMonkey.default/chrome/userContent.css"
-  "userContent.css"
-  'css-mode
-  '(indent-guide-mode linum-mode global-whitespace-mode)
-  426
-  '(383 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-unix))
-  '((mark-ring (406 383 381 425 406 406 383))))
-
-(desktop-create-buffer 208
-  "/Users/John/Library/Application Support/SeaMonkey/Profiles/SeaMonkey.default/extensions/{04c0ff32-fd79-4cee-9d10-b056b518da23}/install.rdf"
-  "install.rdf"
-  'nxml-mode
-  '(indent-guide-mode linum-mode global-whitespace-mode)
-  363
-  '(933 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . utf-8-dos))
-  '((mark-ring (885 336 383 266 363 862 885 885 928 313 382 313 261 134 150 363))))
+  '((mark-ring nil)))
 
 (desktop-create-buffer 208
   "/Users/John/Library/Application Support/SeaMonkey/Profiles/SeaMonkey.default/user.js"
   "user.js"
   'js-mode
   '(indent-guide-mode linum-mode global-whitespace-mode)
-  975
-  '(1159 nil)
+  2926
+  '(2852 nil)
   nil
   nil
   '((buffer-file-coding-system . utf-8-unix))
-  '((mark-ring (1218 1218 1110 1218 1062 1218 1218 1218 1218 1218 1302 1159 1263 1218 1218 1218))))
+  '((mark-ring (3395 3395 3352 3395 3301 3395 3251 3395 3196 3395 3146 3395 3100 3395 3042 2559))))
 
 (desktop-create-buffer 208
-  "/Users/John/Library/Application Support/SeaMonkey/Profiles/SeaMonkey.default/extensions/{04c0ff32-fd79-4cee-9d10-b056b518da23}/README.md"
-  "README.md"
-  'fundamental-mode
+  "/Users/John/.bashrc"
+  ".bashrc"
+  'sh-mode
   '(indent-guide-mode linum-mode global-whitespace-mode)
-  1
-  '(nil nil)
+  3319
+  '(1 nil)
   nil
   nil
   '((buffer-file-coding-system . utf-8-unix))
-  '((mark-ring nil)))
-
-(desktop-create-buffer 208
-  "/Users/John/.config/fontconfig/fonts.conf"
-  "fonts.conf"
-  'nxml-mode
-  '(indent-guide-mode linum-mode global-whitespace-mode)
-  446
-  '(461 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . utf-8-unix))
-  '((mark-ring (68 372 349 297 316 138 153 416 382 201 341 341 307 371 307 446))))
-
-(desktop-create-buffer 208
-  "/Users/John/Library/Application Support/SeaMonkey/Profiles/SeaMonkey.default/chrome/userChrome.css"
-  "userChrome.css"
-  'css-mode
-  '(indent-guide-mode linum-mode global-whitespace-mode)
-  236
-  '(200 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-unix))
-  '((mark-ring (200 200 200 200 144 180 234 200 200 200 200 200 223 200 235))))
-
-(desktop-create-buffer 208
-  "/Users/John/.config/fontconfig/conf.d/05-osx-fonts.conf"
-  "05-osx-fonts.conf"
-  'nxml-mode
-  '(indent-guide-mode linum-mode global-whitespace-mode)
-  83
-  '(78 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . utf-8-unix))
-  '((mark-ring (78 78 78 149 125 102 77 78 80 144 149 78 81 83))))
+  '((mark-ring (3486 3318))))
 

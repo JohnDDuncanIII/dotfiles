@@ -1,4 +1,7 @@
 {
+  soffice.Soffice = {
+    Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/soffice.Soffice.xpm";
+  };
   emacs24.Emacs24 = {
     Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/emacs24.Emacs24.xpm";
   };
@@ -14,11 +17,17 @@
   xclock.Catclock = {
     Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/xclock.Catclock.xpm";
   };
+  inkscape.Inkscape = {
+    Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/inkscape.Inkscape.xpm";
+  };
   "sun-awt-X11-XFramePeer.jetbrains-pycharm-ce" = {
     Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/sun-awt-X11-XFramePeer.jetbrains-pycharm-ce.xpm";
   };
   XMMS_Player.xmms = {
     Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/XMMS_Player.xmms.xpm";
+  };
+  gimp.Gimp = {
+    Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/gimp.Gimp.xpm";
   };
   thunderbird.Thunderbird = {
     Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/thunderbird.Thunderbird.xpm";
@@ -47,11 +56,11 @@
   mahjongg.Mahjongg = {
     Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/mahjongg.Mahjongg.xpm";
   };
-  "xfce4-terminal.Xfce4-terminal" = {
-    Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/xfce4-terminal.Xfce4-terminal.xpm";
-  };
   seamonkey.Seamonkey = {
     Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/seamonkey.Seamonkey.xpm";
+  };
+  "xfce4-terminal.Xfce4-terminal" = {
+    Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/xfce4-terminal.Xfce4-terminal.xpm";
   };
   urxvt.URxvt = {
     Icon = "black_Terminal-app_48-256.png";
@@ -68,11 +77,11 @@
   JFLAP.JFLAP = {
     Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/JFLAP.JFLAP.xpm";
   };
-  nautilus.Nautilus = {
-    Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/nautilus.Nautilus.xpm";
-  };
   "file-roller.File-roller" = {
     Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/file-roller.File-roller.xpm";
+  };
+  nautilus.Nautilus = {
+    Icon = "/Users/John/GNUstep/Library/WindowMaker/CachedPixmaps/nautilus.Nautilus.xpm";
   };
   Logo.WMDock = {
     Icon = 4tQj.png;
