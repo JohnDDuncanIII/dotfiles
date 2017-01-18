@@ -74,7 +74,7 @@
   (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
   ;;(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
   (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-  (setq scroll-step 1) ;; keyboard scroll one line at a time
+  ;;(setq scroll-step 1) ;; keyboard scroll one line at a time
 
 
   ;; enable parenthesis highlighting
@@ -93,7 +93,7 @@
   (set-window-buffer nil (current-buffer)) ; Use them now.
 
   ;; Set tabs to 4 spaces
-  (setq-default indent-tabs-mode nil)
+  (setq-default indent-tabs-mode t)
   (setq standard-indent 4)
   (setq tab-width 4)
   (setq sgml-basic-offset 4)
@@ -152,7 +152,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (highlight-indent-guides stripe-buffer symon scroll-restore leuven-theme indent-guide))))
+    (web-mode php-mode highlight-indent-guides stripe-buffer symon scroll-restore leuven-theme indent-guide))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
