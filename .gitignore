@@ -2,7 +2,9 @@
 .DS_Store
 /[^.]*
 /.CFUserTextEncoding
+/.config/gtk-2.0/gtkfilechooser.ini
 /.bash_history
+/.wget-hsts
 /.sheepshaver_nvram
 /.wmweather
 /.gnupg
@@ -11,7 +13,11 @@
 /.DS_Store
 /.mpd*
 /.FontForge*
+/emacs.d/%backup%~
 /.emacs.d/auto-save-list*
+/.emacs.d/.emacs.desktop*
+/.emacs.d/history
+/.emacs.d/init.el~
 /.config/mpv/watch_later*
 /.cups/lpoptions
 /.local*
